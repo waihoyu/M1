@@ -9,30 +9,29 @@ import Search from '../pages/Search/Search.vue';
 
 
 export default new VueRouter({
-routes:[
-    {
-        path:'/chat',
-        component:Chat
-    },
-    {
-        path:'/me',
-        component:Me
-    },
-    {
-        path:'/recommand',
-        component:Recommand
-    },
-    {
-        path:'/search',
-        component:Search
-    },    
-    {
-        path:'/home',
-        component:Home
-    },
-    {
-        path:'/',
-        component:Home
-    }
-]
+    routes: [{
+            path: '/chat',
+            component: Chat
+        },
+        {
+            path: '/me',
+            component: Me
+        },
+        {
+            path: '/recommand',
+            component: Recommand
+        },
+        {
+            path: '/search',
+            component: Search
+        },
+        {
+            path: '/home',
+            component: Home
+        },
+        {
+            path: '/',
+            component: Home
+        }
+    ]
 });
