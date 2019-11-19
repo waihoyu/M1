@@ -22,6 +22,7 @@
 
 <script>
 export default {
+    name:'item',
   data() {
     return {
       isActive: true
@@ -67,5 +68,6 @@ export default {
 }
 .active {
   display: none;
+  background: orange;
 }
 </style>

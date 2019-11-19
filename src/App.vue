@@ -1,59 +1,37 @@
 <template>
-  <div id="app">
-    <div class="todolist-container">
-      <Header :addNewItemToList="addNewItemToList"></Header>
-      <List :todolist="todolist" :deleteItemFromList="deleteItemFromList"></List>
-      <Footer :todolist="todolist" :selectAll="selectAll" :deleteFinishedItem="deleteFinishedItem"></Footer>
-    </div>
-  </div>
+  <div id="app">123</div>
 </template>
 
 <script>
-import Header from "./components/Header.vue";
-import List from "./components/List.vue";
-import Footer from "./components/Footer";
-
 export default {
   name: "app",
   data() {
     return {
-        todolist:[
-            {title: '打篮球一个小时', isFinished: false},
-            {title: '踢足球一个小时', isFinished: false},
-            {title:' 打排球一个小时', isFinished: false}
-        ]
+      todolist: [
+        { title: "打篮球一个小时", isFinished: false },
+        { title: "踢足球一个小时", isFinished: false },
+        { title: " 打排球一个小时", isFinished: false }
+      ]
     };
   },
   methods: {
-     addNewItemToList(item){
-         this.todolist.unshift(item);
-     },
-     deleteItemFromList(todo){
-         this.todolist.splice(this.todolist.indexOf(todo),1);
-     },
-     selectAll(value){
-         this.todolist.forEach((item)=>{
-              item.isFinished = value;
-          });
-     },
-     deleteFinishedItem(){
-         this.todolist = this.todolist.filter(todo=> !todo.isFinished);
-     }
-
-  },
-  computed: {
-    finishCount: function(){
-        return  this.todolist.reduce((total,todo)=>total + (todo.isChecked?1:0),0);
+    addNewItemToList(item) {
+      this.todolist.unshift(item);
     },
-     isAllFinished: function(){
-        //  this.todolist.some((item)=> item.isFinished);
-         return true;
-     }   
+    deleteItemFromList(todo) {
+      this.todolist.splice(this.todolist.indexOf(todo), 1);
+    },
+    selectAll(value) {
+      this.todolist.forEach(item => {
+        item.isFinished = value;
+      });
+    },
+    deleteFinishedItem() {
+      this.todolist = this.todolist.filter(todo => !todo.isFinished);
+    }
   },
+  computed: {},
   components: {
-    Header,
-    List,
-    Footer
   }
 };
 </script>

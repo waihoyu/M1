@@ -9,6 +9,7 @@
 <script>
 import Item from '../components/Item'
     export default {
+        name:'list',
         data () {
             return {
                 

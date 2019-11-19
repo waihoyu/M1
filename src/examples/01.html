@@ -8,32 +8,61 @@
     <style>
         body {
             color:#FFF;
+            background:green;
         }
         #container {
             width:500px;
-            height:250px;
+            height:200px;
             background:#039;
+            position:absolute;
+            /* padding-top:40px; */
+            /* display:flex; */
+            /* flex-direction: row; */
+            /* justify-content: center; */
+             /* 水平居中 */
+            /* align-items: center;     */
+             /* 垂直居中 */
         }
         #A {
-            float:left;
-            width:200px;
-            height:200px;
+            /* float:right; */
+            width:100px;
+            height:100px;
             background:#C00;
-            margin-top:20px;
+            /* overflow:hidden; */
+            position: relative;
+            /* margin-top:50px; */
+            /* padding-top:40px; */
+            /* margin-left:20px; */
+            /* top:-50px; */
+
         }
-        #B {
-            width:480px;
-            height:230px;
+        #B{
+            width:80px;
+            height:30px;
             background:#000;
+            margin: 0px auto;
+            text-align:center;
+            /* just */
+        }
+        #C{
+            width:80px;
+            height:30px;
+            background:yellow;
+            color:#000;
+            margin: 0px auto;
+            text-align:center;
         }
     </style>
 </head>
 <body>
     <div id="container">
         <div id="A">你好</div>
-        <div id="B">
+        <!-- <div id="B">
           1
         </div>
+        <div id="C">
+            2
+          </div> -->
     </div>
 </body>
 </html>
