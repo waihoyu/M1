@@ -6,13 +6,23 @@ import {
     Checklist,
     Button
 } from 'mint-ui';
+import LyTab from 'ly-tab'
+import 'mint-ui/lib/style.css';
+import router from './router';
+import FastClick from 'fastclick';
+FastClick.attach(document.body);
 Vue.component(Cell.name, Cell);
 Vue.component(Checklist.name, Checklist);
 Vue.component(Button.name, Button);
-import 'mint-ui/lib/style.css';
-import router from './router';
-Vue.config.productionTip = false
-
+Vue.config.productionTip = false;
+Vue.use(LyTab);
+router.beforeEach((to, from, next) => {
+    /* 路由发生变化修改页面title */
+    if (to.meta.title) {
+      document.title = to.meta.title
+    }
+    next()
+  });
 new Vue({
     router,
     store,
