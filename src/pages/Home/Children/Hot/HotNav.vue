@@ -3,7 +3,23 @@
         <div class="hot-nav-content">
             <div class="hot-nav-inner">
                 <a class="inner-item">
-                    <img src="../Hot/home/nav_icon01.png" alt />
+                    <img src="../Hot/home/nav_icon06.gif" alt />
+                    <span>限时秒杀</span>
+                </a>
+                <a class="inner-item">
+                    <img src="../Hot/home/nav_icon02.png" alt />
+                    <span>限时秒杀</span>
+                </a>
+                <a class="inner-item">
+                    <img src="../Hot/home/nav_icon03.png" alt />
+                    <span>限时秒杀</span>
+                </a>
+                <a class="inner-item">
+                    <img src="../Hot/home/nav_icon04.png" alt />
+                    <span>限时秒杀</span>
+                </a>
+                <a class="inner-item">
+                    <img src="../Hot/home/nav_icon05.png" alt />
                     <span>限时秒杀</span>
                 </a>
                 <a class="inner-item">
@@ -11,73 +27,57 @@
                     <span>限时秒杀</span>
                 </a>
                 <a class="inner-item">
-                    <img src="../Hot/home/nav_icon01.png" alt />
+                    <img src="../Hot/home/nav_icon07.png" alt />
                     <span>限时秒杀</span>
                 </a>
                 <a class="inner-item">
-                    <img src="../Hot/home/nav_icon01.png" alt />
+                    <img src="../Hot/home/nav_icon08.png" alt />
                     <span>限时秒杀</span>
                 </a>
                 <a class="inner-item">
-                    <img src="../Hot/home/nav_icon01.png" alt />
+                    <img src="../Hot/home/nav_icon09.png" alt />
                     <span>限时秒杀</span>
                 </a>
                 <a class="inner-item">
-                    <img src="../Hot/home/nav_icon01.png" alt />
+                    <img src="../Hot/home/nav_icon10.png" alt />
                     <span>限时秒杀</span>
                 </a>
                 <a class="inner-item">
-                    <img src="../Hot/home/nav_icon01.png" alt />
+                    <img src="../Hot/home/nav_icon11.png" alt />
                     <span>限时秒杀</span>
                 </a>
                 <a class="inner-item">
-                    <img src="../Hot/home/nav_icon01.png" alt />
+                    <img src="../Hot/home/nav_icon12.png" alt />
                     <span>限时秒杀</span>
                 </a>
                 <a class="inner-item">
-                    <img src="../Hot/home/nav_icon01.png" alt />
+                    <img src="../Hot/home/nav_icon13.png" alt />
                     <span>限时秒杀</span>
                 </a>
                 <a class="inner-item">
-                    <img src="../Hot/home/nav_icon01.png" alt />
+                    <img src="../Hot/home/nav_icon14.png" alt />
                     <span>限时秒杀</span>
                 </a>
                 <a class="inner-item">
-                    <img src="../Hot/home/nav_icon01.png" alt />
+                    <img src="../Hot/home/nav_icon15.png" alt />
                     <span>限时秒杀</span>
                 </a>
                 <a class="inner-item">
-                    <img src="../Hot/home/nav_icon01.png" alt />
+                    <img src="../Hot/home/nav_icon16.png" alt />
                     <span>限时秒杀</span>
                 </a>
                 <a class="inner-item">
-                    <img src="../Hot/home/nav_icon01.png" alt />
+                    <img src="../Hot/home/nav_icon16.png" alt />
                     <span>限时秒杀</span>
                 </a>
                 <a class="inner-item">
-                    <img src="../Hot/home/nav_icon01.png" alt />
-                    <span>限时秒杀</span>
-                </a>
-                <a class="inner-item">
-                    <img src="../Hot/home/nav_icon01.png" alt />
-                    <span>限时秒杀</span>
-                </a>
-                <a class="inner-item">
-                    <img src="../Hot/home/nav_icon01.png" alt />
-                    <span>限时秒杀</span>
-                </a>
-                <a class="inner-item">
-                    <img src="../Hot/home/nav_icon01.png" alt />
-                    <span>限时秒杀</span>
-                </a>
-                <a class="inner-item">
-                    <img src="../Hot/home/nav_icon01.png" alt />
+                    <img src="../Hot/home/nav_icon16.png" alt />
                     <span>限时秒杀</span>
                 </a>
             </div>
-            <div class="hot-nav-bottom">
-                <div class="hot-nav-bottom-inner" :style="innerStyle"></div>
-            </div>
+        </div>
+        <div class="hot-nav-bottom">
+            <div class="hot-nav-bottom-inner" :style="innerStyle"></div>
         </div>
     </div>
 </template>
@@ -143,8 +143,7 @@ export default {
                 this.barMoveWidth = this.bgBarW - this.barXWidth
             }
         },
-        handleTouchEnd(e) {
-            //   let touch = e.touches[0];
+        handleTouchEnd() {
             this.endX = this.barMoveWidth
         }
     }
@@ -156,6 +155,7 @@ export default {
   width 100%
   height 180px
   background #fff
+  position relative
   .hot-nav-content
     width 100%
     overflow-x scroll

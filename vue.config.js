@@ -1,12 +1,11 @@
-const path = require("path");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const path = require('path')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 function resolve(dir) {
-    return path.join(__dirname, dir);
+    return path.join(__dirname, dir)
 }
 module.exports = {
-    publicPath: process.env.NODE_ENV === 'production' ?
-        '/' : '/',
+    publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
     outputDir: 'dist',
     assetsDir: 'static',
     filenameHashing: true,
@@ -46,7 +45,7 @@ module.exports = {
     // corsUseCredentials: false,
     // webpack 配置，键值对象时会合并配置，为方法时会改写配置
     // https://cli.vuejs.org/guide/webpack.html#simple-configuration
-    configureWebpack: (config) => {
+    configureWebpack: config => {
         optimization: {
             minimizer: [
                 new UglifyJsPlugin({
@@ -54,7 +53,7 @@ module.exports = {
                         compress: {
                             warnings: false,
                             drop_console: true, //consoledrop_debugger:false,
-                            pure_funcs: ["console.log"] //移除console            
+                            pure_funcs: ['console.log'] //移除console
                         }
                     }
                 })
@@ -63,7 +62,7 @@ module.exports = {
     },
     // webpack 链接 API，用于生成和修改 webapck 配置
     // https://github.com/mozilla-neutrino/webpack-chain
-    chainWebpack: (config) => {
+    chainWebpack: config => {
         if (process.env.NODE_ENV === 'production') {
             // 为生产环境修改配置...
             config.mode = 'production';
@@ -72,26 +71,23 @@ module.exports = {
             config.mode = 'development';
         }
         // 因为是多页面，所以取消 chunks，每个页面只对应一个单独的 JS / CSS
-        config.optimization
-            .splitChunks({
-                cacheGroups: {}
-            });
+        config.optimization.splitChunks({
+            cacheGroups: {}
+        });
         // 'src/lib' 目录下为外部库文件，不参与 eslint 检测
         config.module
             .rule('eslint')
-            .exclude
-            .add('/Users/Mac/Downloads/FE/community_built-in/src/lib')
+            .exclude.add('/Users/Mac/Downloads/FE/community_built-in/src/lib')
             .end();
         config.resolve.alias
-            .set("@", resolve("src"))
-            .set("assets", resolve("src/assets"))
-            .set("components", resolve("src/components"))
-            .set("base", resolve("baseConfig"))
-            .set("public", resolve("public"))
-            .set("common", resolve("src/common"));
-        config.resolve.extensions
-            .merge(['.js', '.jsx', '.vue', '.json'])
-            .end();
+            .set('@', resolve('src'))
+            .set('assets', resolve('src/assets'))
+            .set('components', resolve('src/components'))
+            .set('base', resolve('baseConfig'))
+            .set('public', resolve('public'))
+            .set('common', resolve('src/common'));
+        config.resolve.extensions.merge(['.js', '.jsx', '.vue', '.json']).end();
+        config.resolve.symlinks(true);
     },
 
     // 配置高于chainWebpack中关于 css loader 的配置
@@ -99,7 +95,7 @@ module.exports = {
         // 是否开启支持 foo.module.css 样式
         modules: false,
         // 是否使用 css 分离插件 ExtractTextPlugin，采用独立样式文件载入，不采用 <style> 方式内联至 html 文件中
-        extract: true,
+        extract: false,
         // 是否构建样式地图，false 将提高构建速度
         sourceMap: false,
         // css预设器配置项
@@ -107,7 +103,6 @@ module.exports = {
             css: {
                 // options here will be passed to css-loader
             },
-
             postcss: {
                 // options here will be passed to postcss-loader
             }
@@ -118,14 +113,14 @@ module.exports = {
     // https://webpack.js.org/configuration/dev-server/
     devServer: {
         open: true,
-        host: '127.0.0.1',
-        port: 3000,
+        host: '0.0.0.0',
+        port: 8080,
         https: false,
         hotOnly: false,
         // proxy: null,
         proxy: {
             '/api': {
-                target: 'http://www.baidu.com/api',
+                target: 'http://localhost:8080',
                 changeOrigin: true, // 允许websockets跨域
                 // ws: true,
                 pathRewrite: {
@@ -134,9 +129,7 @@ module.exports = {
             }
         },
         // 代理转发配置，用于调试环境
-        before: app => {
-
-        },
+        before: app => {}
     },
 
     // 构建时开启多进程处理 babel 编译
@@ -145,4 +138,4 @@ module.exports = {
     pwa: {},
     // 第三方插件配置
     pluginOptions: {}
-};
+}

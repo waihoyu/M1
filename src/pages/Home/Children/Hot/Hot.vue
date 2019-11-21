@@ -4,22 +4,25 @@
             <div class="swiper-wrapper">
                 <!-- v-for="(casual, index) in homecasual" :key="index" -->
                 <div class="swiper-slide">
-                    <img src="./Hot/home/s1.png" alt width="100%" />
+                    <img src="./home/s1.png" alt width="100%" />
                 </div>
             </div>
             <div class="swiper-pagination"></div>
         </div>
         <hot-nav class="hot-nav"> </hot-nav>
+        <div class="hot-ad">
+            <img src="./home/s2.png" alt="">
+        </div>
+        <hot-shop-list class="hot-shop-list"></hot-shop-list>
     </div>
 </template>
 
 <script>
-import Swiper from 'swiper'
-import 'swiper/css/swiper.min.css'
-import HotNav from './Hot/HotNav'
-//   import HotShopList from './HotShopList'
-
-import { mapState } from 'vuex'
+import Swiper from 'swiper';
+import 'swiper/css/swiper.min.css';
+import HotNav from './HotNav';
+import HotShopList from './HotShopList';
+// import { mapState } from 'vuex'
 export default {
     name: 'Hot',
     data() {
@@ -37,7 +40,8 @@ export default {
     props: [''],
     methods: {},
     components: {
-        HotNav
+        HotNav,
+        HotShopList
     }
 }
 </script>
@@ -49,4 +53,13 @@ export default {
   width 100%
   height 100%
   padding-top 4rem
+  .hot-ad
+    width 100%
+    height 100px
+    margin-top 1px
+    background #fff
+    // overflow hidden
+    img
+        height 100%
+        width 100%
 </style>

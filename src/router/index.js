@@ -5,7 +5,7 @@ import Home from '../pages/Home/Home.vue';
 import Mine from '../pages/Mine/Mine.vue';
 import Recommand from '../pages/Recommand/Recommand.vue';
 import Search from '../pages/Search/Search.vue';
-import Hot from '../pages/Home/Children/Hot';
+import Hot from '../pages/Home/Children/Hot/Hot';
 import Dress from '../pages/Home/Children/Dress';
 import Box from '../pages/Home/Children/Box';
 import Man from '../pages/Home/Children/Man';
@@ -14,7 +14,7 @@ import Food from '../pages/Home/Children/Food';
 import MyBaby from '../pages/Home/Children/MyBaby';
 import Ele from '../pages/Home/Children/Ele';
 import General from '../pages/Home/Children/General';
-import TabType from '../config/tab-type'
+import TabType from '../config/tab-type';
 
 
 // const originalPush = Router.prototype.push;
