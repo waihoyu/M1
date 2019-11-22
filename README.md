@@ -1,4 +1,6 @@
-# pdd3
+# 仿京东商城
+
+![image](./src/assets/readmeImages/main.png)
 
 ## Project setup
 ```
