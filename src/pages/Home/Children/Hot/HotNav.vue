@@ -101,44 +101,51 @@ export default {
 
 <style lang="stylus" scoped>
 .hot-nav
-  width 100%
-  height 180px
-  background #fff
-  position relative
-  .hot-nav-content
     width 100%
-    overflow-x scroll
+    @media screen and (min-width: 1200px) {
+        height 90px
+    }
+    height 180px
+    background #fff
+    position relative
+    .hot-nav-content
+        width 100%
+        overflow-x scroll
     .hot-nav-inner
-      width 660px
-      height 180px
-      display flex
-      flex-wrap wrap
-      .inner-item
-        width 80px
-        height 80px
+        @media screen and (min-width: 1200px) {
+            width 1300px
+            height 90px
+        }
+        width 660px
+        height 180px
         display flex
-        flex-direction column
-        justify-content center
-        align-items center
-        font-size 14px
-        color #666666
-        img
-          width 40%
-          margin-bottom 5px
+        flex-wrap wrap
+        .inner-item
+            width 80px
+            height 80px
+            display flex
+            flex-direction column
+            justify-content center
+            align-items center
+            font-size 14px
+            color #666666
+            img
+                width 40%
+                margin-bottom 5px
   .hot-nav-content::-webkit-scrollbar
-    display none
+        display none
   .hot-nav-bottom
-    width 100px
-    height 2px
-    background-color #ccc
-    position absolute
-    left 50%
-    margin-left -50px
-    // bottom: 8px;
+        width 100px
+        height 2px
+        background-color #ccc
+        position absolute
+        left 50%
+        margin-left -50px
+        // bottom: 8px;
     .hot-nav-bottom-inner
-      position absolute
-      left 0
-      background yellow
-      width 50px
-      height 100%
+        position absolute
+        left 0
+        background yellow
+        width 50px
+        height 100%
 </style>

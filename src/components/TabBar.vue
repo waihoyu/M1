@@ -101,6 +101,10 @@ export default {
     color: #666;
 
     img {
+      @media screen and (min-width: 1200px) {
+        height 35px
+        width 35px
+      }
       width: 35%;
       margin-bottom: 2px;
     }
