@@ -7,7 +7,6 @@ export default {
     },
     async reqHomeNav({commit}){
         const result = await getHomeNav();
-        console.log(result.message)
         commit(HOME_NAV,{homenav: result.message});
     }
 };
