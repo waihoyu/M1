@@ -1,8 +1,8 @@
-const path = require('path')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 function resolve(dir) {
-    return path.join(__dirname, dir)
+    return path.join(__dirname, dir);
 }
 module.exports = {
     publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
@@ -57,7 +57,7 @@ module.exports = {
                         }
                     }
                 })
-            ]
+            ];
         }
     },
     // webpack 链接 API，用于生成和修改 webapck 配置
@@ -120,7 +120,7 @@ module.exports = {
         // proxy: null,
         proxy: {
             '/api': {
-                target: 'http://localhost:8080',
+                target: 'http://localhost:1688',
                 changeOrigin: true, // 允许websockets跨域
                 // ws: true,
                 pathRewrite: {
@@ -138,4 +138,4 @@ module.exports = {
     pwa: {},
     // 第三方插件配置
     pluginOptions: {}
-}
+};

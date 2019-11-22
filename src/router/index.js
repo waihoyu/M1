@@ -66,80 +66,80 @@ export default new Router({
                     path: '/home/dress',
                     component: Dress,
                     params: {
-                        id: '1'
+                        id: TabType.DRESS
                     },
                     meta:{
-                        id: '1'
+                        id: TabType.DRESS
                     }
                 },
                 {
                     path: '/home/box',
                     component: Box,
                     params: {
-                        id: '2'
+                        id: TabType.BOX
                     },
                     meta:{
-                        id: '2'
+                        id: TabType.BOX
                     }
                 },
                 {
                     path: '/home/mybaby',
                     component: MyBaby,
                     params: {
-                        id: '3'
+                        id: TabType.MYBABY
                     },
                     meta:{
-                        id: '3'
+                        id: TabType.MYBABY
                     }
                 },
                 {
                     path: '/home/general',
                     component: General,
                     params: {
-                        id: '4'
+                        id: TabType.GENERAL
                     },
                     meta:{
-                        id: '4'
+                        id: TabType.GENERAL
                     }
                 },
                 {
                     path: '/home/food',
                     component: Food,
                     params: {
-                        id: '5'
+                        id: TabType.FOOD
                     },
                     meta:{
-                        id: '5'
+                        id: TabType.FOOD
                     }
                 },
                 {
                     path: '/home/shirt',
                     component: Shirt,
                     params: {
-                        id: '6'
+                        id: TabType.SHIRT
                     },
                     meta:{
-                        id: '6'
+                        id: TabType.SHIRT
                     }
                 },
                 {
                     path: '/home/man',
                     component: Man,
                     params: {
-                        id: '7'
+                        id: TabType.MAN
                     },
                     meta:{
-                        id: '7'
+                        id: TabType.ELE
                     }
                 },
                 {
                     path: '/home/ele',
                     component: Ele,
                     params: {
-                        id: '8'
+                        id: TabType.ELE
                     },
                     meta:{
-                        id: '8'
+                        id: TabType.ELE
                     }
                 }
             ]

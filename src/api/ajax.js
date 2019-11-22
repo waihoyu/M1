@@ -1,5 +1,12 @@
 import axios from 'axios';
 
+/**
+ * 
+ * @param {*} url 
+ * @param {*} params 
+ * @param {*} type 
+ */
+
 export default function ajax(url = '', params = {}, type = 'GET') {
     let promise;
     return new Promise((resolve, reject) => {

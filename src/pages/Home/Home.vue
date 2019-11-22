@@ -12,7 +12,6 @@
 </template>
 
 <script>
-// import { red } from 'color-name'
 export default {
     name: 'Home',
     data() {
@@ -43,20 +42,19 @@ export default {
                 '/home/man',
                 '/home/ele'
             ]
-        }
+        };
     },
     mounted: function() {
-        this.selectedId = this.$route.meta && parseInt(this.$route.meta.id)
+        this.selectedId = this.$route.meta && parseInt(this.$route.meta.id);
     },
     methods: {
         change(item, index) {
             //   this.$router.replace(this.subRouteUrl[index]);
-            //   console.log(this.$parent);
-            this.$router.replace(item.path)
-            this.selectedId = index
+            this.$router.replace(item.path);
+            this.selectedId = index;
         }
     }
-}
+};
 </script>
 
 <style lang="stylus" scoped>

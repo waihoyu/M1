@@ -1,17 +1,16 @@
 <template>
     <div id="hot">
-        <div class="swiper-container">
+        <div class="swiper-container" v-if="homecasual.length>0">
             <div class="swiper-wrapper">
-                <!-- v-for="(casual, index) in homecasual" :key="index" -->
-                <div class="swiper-slide">
-                    <img src="./home/s1.png" alt width="100%" />
-                </div>
+                    <div class="swiper-slide" v-for="(casual, index) in homecasual" :key="index">
+                        <img :src="casual.imgurl" alt width="100%" />
+                    </div>
             </div>
             <div class="swiper-pagination"></div>
         </div>
         <hot-nav class="hot-nav"> </hot-nav>
         <div class="hot-ad">
-            <img src="./home/s2.png" alt="">
+            <img src="./home/s2.png" alt="" />
         </div>
         <hot-shop-list class="hot-shop-list"></hot-shop-list>
     </div>
@@ -22,20 +21,31 @@ import Swiper from 'swiper';
 import 'swiper/css/swiper.min.css';
 import HotNav from './HotNav';
 import HotShopList from './HotShopList';
-// import { mapState } from 'vuex'
+import { mapState } from 'vuex';
 export default {
     name: 'Hot',
     data() {
-        return {}
+        return {};
+    },
+    computed: {
+        ...mapState(['homecasual'])
     },
     mounted() {
-        new Swiper('.swiper-container', {
-            autoplay: true, //可选选项，自动滑动
-            loop: true,
-            pagination: {
-                el: '.swiper-pagination'
-            }
-        })
+        this.$store.dispatch('reqHomeCasual');
+        // this.homecasual = this.$store.state.homecasual;
+    },
+    watch: {
+        homecasual() {
+            this.$nextTick(() => {
+                new Swiper('.swiper-container', {
+                    autoplay: true, //可选选项，自动滑动
+                    loop: true,
+                    pagination: {
+                        el: '.swiper-pagination'
+                    }
+                });
+            });
+        }
     },
     props: [''],
     methods: {},
@@ -43,7 +53,7 @@ export default {
         HotNav,
         HotShopList
     }
-}
+};
 </script>
 
 <style lang="stylus" scoped>

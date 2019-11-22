@@ -1,78 +1,22 @@
 <template>
     <div class="hot-nav">
-        <div class="hot-nav-content">
+        <div class="hot-nav-content" v-if="homenav">
             <div class="hot-nav-inner">
-                <a class="inner-item">
-                    <img src="../Hot/home/nav_icon06.gif" alt />
-                    <span>限时秒杀</span>
+                <a
+                    class="inner-item"
+                    v-for="(nav, index) in homenav.item1"
+                    :key="index"
+                >
+                    <img :src="nav.iconurl" alt />
+                    <span>{{ nav.icontitle }}</span>
                 </a>
-                <a class="inner-item">
-                    <img src="../Hot/home/nav_icon02.png" alt />
-                    <span>限时秒杀</span>
-                </a>
-                <a class="inner-item">
-                    <img src="../Hot/home/nav_icon03.png" alt />
-                    <span>限时秒杀</span>
-                </a>
-                <a class="inner-item">
-                    <img src="../Hot/home/nav_icon04.png" alt />
-                    <span>限时秒杀</span>
-                </a>
-                <a class="inner-item">
-                    <img src="../Hot/home/nav_icon05.png" alt />
-                    <span>限时秒杀</span>
-                </a>
-                <a class="inner-item">
-                    <img src="../Hot/home/nav_icon01.png" alt />
-                    <span>限时秒杀</span>
-                </a>
-                <a class="inner-item">
-                    <img src="../Hot/home/nav_icon07.png" alt />
-                    <span>限时秒杀</span>
-                </a>
-                <a class="inner-item">
-                    <img src="../Hot/home/nav_icon08.png" alt />
-                    <span>限时秒杀</span>
-                </a>
-                <a class="inner-item">
-                    <img src="../Hot/home/nav_icon09.png" alt />
-                    <span>限时秒杀</span>
-                </a>
-                <a class="inner-item">
-                    <img src="../Hot/home/nav_icon10.png" alt />
-                    <span>限时秒杀</span>
-                </a>
-                <a class="inner-item">
-                    <img src="../Hot/home/nav_icon11.png" alt />
-                    <span>限时秒杀</span>
-                </a>
-                <a class="inner-item">
-                    <img src="../Hot/home/nav_icon12.png" alt />
-                    <span>限时秒杀</span>
-                </a>
-                <a class="inner-item">
-                    <img src="../Hot/home/nav_icon13.png" alt />
-                    <span>限时秒杀</span>
-                </a>
-                <a class="inner-item">
-                    <img src="../Hot/home/nav_icon14.png" alt />
-                    <span>限时秒杀</span>
-                </a>
-                <a class="inner-item">
-                    <img src="../Hot/home/nav_icon15.png" alt />
-                    <span>限时秒杀</span>
-                </a>
-                <a class="inner-item">
-                    <img src="../Hot/home/nav_icon16.png" alt />
-                    <span>限时秒杀</span>
-                </a>
-                <a class="inner-item">
-                    <img src="../Hot/home/nav_icon16.png" alt />
-                    <span>限时秒杀</span>
-                </a>
-                <a class="inner-item">
-                    <img src="../Hot/home/nav_icon16.png" alt />
-                    <span>限时秒杀</span>
+                <a
+                    class="inner-item"
+                    v-for="(nav, index) in homenav.item2"
+                    :key="index + 8"
+                >
+                    <img :src="nav.iconurl" alt />
+                    <span>{{ nav.icontitle }}</span>
                 </a>
             </div>
         </div>
@@ -83,6 +27,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
     name: 'HotNav',
     data() {
@@ -91,63 +36,67 @@ export default {
                 window.innerWidth ||
                 document.documentElement.clientWidth ||
                 document.body.clientWidth,
-            scrollContentW: 720,
+            scrollContentW: 640,
             bgBarW: 100,
             barXWidth: 0,
             startX: 0,
             endX: 0,
             barMoveWidth: 0
-        }
+        };
     },
     mounted() {
-        this.getBarXWidth()
-        this.bindEvent()
+        this.$store.dispatch('reqHomeNav');
+        this.getBarXWidth();
+        this.bindEvent();
+        // console.log(this.$store.state.homenav)
     },
     computed: {
         innerStyle() {
             return {
                 width: `${this.barXWidth}px`,
                 left: `${this.barMoveWidth}px`
-            }
-        }
+            };
+        },
+        ...mapState(['homenav'])
     },
     methods: {
         getBarXWidth() {
-            this.barXWidth = this.bgBarW * (this.contentW / this.scrollContentW)
+            this.barXWidth =
+                this.bgBarW * (this.contentW / this.scrollContentW);
         },
         bindEvent() {
             this.$el.addEventListener('touchstart', this.handleTouchStart, {
                 passive: false
-            })
+            });
             this.$el.addEventListener('touchmove', this.handleTouchMove, {
                 passive: false
-            })
+            });
             this.$el.addEventListener('touchend', this.handleTouchEnd, {
                 passive: false
-            })
+            });
         },
         handleTouchStart(e) {
-            let touch = e.touches[0]
-            this.startX = Number(touch.pageX)
+            let touch = e.touches[0];
+            this.startX = Number(touch.pageX);
         },
         handleTouchMove(e) {
-            let touch = e.touches[0]
-            let moveWidth = Number(touch.pageX) - this.startX
+            let touch = e.touches[0];
+            let moveWidth = Number(touch.pageX) - this.startX;
             this.barMoveWidth = -(
                 moveWidth * (this.bgBarW / this.scrollContentW) -
                 this.endX
-            )
+            );
             if (this.barMoveWidth <= 0) {
-                this.barMoveWidth = 0
+                this.barMoveWidth = 0;
             } else if (this.barMoveWidth >= this.bgBarW - this.barXWidth) {
-                this.barMoveWidth = this.bgBarW - this.barXWidth
+                this.barMoveWidth = this.bgBarW - this.barXWidth;
             }
         },
         handleTouchEnd() {
-            this.endX = this.barMoveWidth
+            this.endX = this.barMoveWidth;
         }
     }
-}
+};
 </script>
 
 <style lang="stylus" scoped>
@@ -160,7 +109,7 @@ export default {
     width 100%
     overflow-x scroll
     .hot-nav-inner
-      width 720px
+      width 660px
       height 180px
       display flex
       flex-wrap wrap
