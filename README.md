@@ -1,8 +1,8 @@
 # 仿电子商城
 
-![image](./src/assets/readmeImages/main.png)
+![image](./src/assets/images/main.png)
 
-![image](./src/assets/readmeImages/recommend.png)
+![image](./src/assets/images/recommend.png)
 
 
 
