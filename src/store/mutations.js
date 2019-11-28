@@ -1,5 +1,5 @@
 
-import { HOME_CASUAL, HOME_NAV, HOME_SHOP_LIST, RECOMMEND_SHOP_LIST} from './mutation-types';
+import { HOME_CASUAL, HOME_NAV, HOME_SHOP_LIST, RECOMMEND_SHOP_LIST,REARCH_GOODS} from './mutation-types';
 export default {
     //请求首页数据
     [HOME_CASUAL](state, { homecasual }) {
@@ -15,5 +15,10 @@ export default {
     },
     [RECOMMEND_SHOP_LIST](state, { recommendshoplist }) {
         state.recommendshoplist = recommendshoplist;
+    },
+    [REARCH_GOODS](state, { rearchgoods }) {
+        state.rearchgoods = rearchgoods;
     }
 };
+
+

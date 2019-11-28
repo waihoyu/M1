@@ -1,82 +1,154 @@
 <template>
-  <div class="recommend-container" v-if="recommendshoplist.length > 0">
-      <ul class="recommend">
-          <li class="recommend-item" div v-for="(list,index) in recommendshoplist" :key="index">
-              <img :src="list.image_url" alt="" width="100%" v-if="list.image_url">
-              <h4 class="item-title">{{list.short_name}}</h4>
-              <div class="item-bottom">
-                  <span class="item-price">
-                      ¥{{list.price}}
-                  </span>
-                  <span class="item-sales">
-                      {{list.sales_tip}}
-                  </span>
-                  <button class="item-btn">找相关</button>
-                  <!-- <span class="item-price">{{item.}}</span> -->
-              </div>
-          </li>
-      </ul>
-  </div>
+    <div class="search">
+        <search-nav></search-nav>
+        <div class="shop">
+            <div class="menu-wrapper">
+                <ul>
+                    <li class="current menu-item" v-for="(good, index) in rearchgoods" :key="index">
+                        <span>{{good.name}}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="shop-wrapper">
+                <ul>
+                    <li class="shops-li" v-for="(good, index) in rearchgoods" :key="index">
+                        <div class="shops-title">
+                            <h4>{{good.name}}</h4>
+                            <a href="">查看更多</a>
+                        </div>
+                        <ul class="phone-type" v-if="good.tag === 'phone'">
+                            <li v-for="(ca, index) in good.category" :key="index">
+                                <img :src="ca.icon" alt="">
+                            </li>
+                        </ul>
+                        <ul class="shops-items" >
+                            <li v-for="(item, index) in good.items" :key="index">
+                                <img :src="item.icon" alt="" />
+                                <span>{{item.title}}</span>
+                            </li>                                        
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import SearchNav from './children/SearchNav';
+import {mapState} from 'vuex'
+import BScroll from 'better-scroll'
 export default {
+    name: 'Search',
+    data() {
+        return {};
+    },
     computed: {
-        ...mapState(['recommendshoplist']),
+        ...mapState(['rearchgoods'])
     },
-    mounted() {
-        this.$store.dispatch('reqRecommendShopList');
+    mounted () {
+      this.$store.dispatch('reqRearchGoods');  
     },
+    components: {
+        SearchNav
+    },
+    methods: {
+        _initScroll(){
+            this.leftScroll = new BScroll('.menu-wrapper', {
+            });
+            this.rightScroll = new BScroll('.shop-wrapper', {
+            probeType: 3
+            });
+        },
+    },
+    watch: {
+        rearchgoods(){
+            this.$nextTick(()=>{
+                this._initScroll();
+            })
+        }
+    }
 };
 </script>
 
 <style lang="stylus" scoped>
-.recommend-container
-    background #fff
+@import '../../common/stylus/minxin.styl'
+.search
+    background #F5F5F5
     width 100%
     height 100%
-    .recommend
+    .shop
         display flex
-        flex-direction row
-        flex-wrap wrap
-        background #f5f5f5
-        margin-bottom 50px
-        .recommend-item:nth-child(2n - 1)
-            margin-right 1%
-        .recommend-item 
-            width 49.5%
-            background #FFF
-            padding-bottom 15px
-            margin-bottom 15px
-            .item-title
-                line-height 20px
-                font-size 13px
-                font-weight lighter
-                height 20px
-                overflow hidden
-                margin 5px  0
-                padding 0 5px
-            .item-bottom 
+        position absolute
+        background-color red
+        width 100%
+        top 60px
+        bottom 50px
+        width 100%
+        .menu-wrapper
+            background-color #e0e0e0
+            width: 80px
+            flex 0 0 80px
+            .menu-item
+                width 100%
+                height 60px
+                background-color #fafafa
                 display flex
-                flex-direction row
+                justify-content center
                 align-items center
-                padding 0 6px
-                .item-price
-                    flex 2
-                    color red
-                    font-weiht bolder
-                    font-size 12px
-                .item-sales
-                    flex 3
-                    // color red
-                    font-weiht bolder 
-                    font-size 10px
-                .item-btn
-                    flex 2
-                    border 1px solid orange
-                    height 26px
-                    background-color transparent
-                    color red
-                    border-radius 5px
+                font-weight lighter
+                color #666666
+                position relative
+            .current
+                color #e02e24
+            .current::before
+                content ''
+                background-color #e02e24
+                width 4px
+                height 30px
+                position absolute
+                left  0
+        .shop-wrapper
+            flex 1
+            background-color #fff
+            .shops-title 
+                display flex 
+                flex-direction row
+                padding 0 10px 
+                height 44px 
+                align-items center
+                justify-content space-between
+                color #999 
+                a 
+                    color #999 
+                    text-decoration none 
+                    font-weight lighter
+            .phone-type
+                width 100%
+                display flex
+                flex-wrap wrap
+                border-bottom-1px(red)
+                li
+                    width 33.3%
+                    display flex
+                    justify-content center
+                    align-items center
+                    margin  5px 0 
+                    img 
+                        width 70%
+            .shops-items 
+                display flex
+                flex-wrap wrap
+                li 
+                    display flex
+                    flex-direction column
+                    width 33.3% 
+                    height 90px
+                    justify-content center
+                    align-items center
+                    font-size 14px
+                    img 
+                        width 60%
+                        height 60% 
+                        margin-bottom 5px 
 </style>

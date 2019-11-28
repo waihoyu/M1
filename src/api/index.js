@@ -31,3 +31,9 @@ export const getRecommendShopList = ()=>{
     let promise = ajax(BASE_URL + '/api/recommendshoplist');
     return  promise;
 };
+
+
+export const getRearchGoods = ()=>{
+    let promise = ajax(BASE_URL + '/api/searchgoods');
+    return  promise;
+};
