@@ -1,13 +1,13 @@
 <template>
-    <div id="hot-shop-container">
+    <div id="hot-shop-container" v-if="homeshoplist.length > 0">
         <ul class="shop-list">
-            <li class="shop-list-item">
-                <img src="./home/01.jpeg" alt="" width="100%" />
+            <li class="shop-list-item" v-for="(shop,index) in homeshoplist" :key="index">
+                <img :src="shop.image_url" width="100%" alt=""/>
                 <h4 class="shop-list-item-title">
-                    香朵儿运动服套装女2018春秋新款学生韩版宽松时尚休闲大码两件套
+                    {{shop.goods_name}}
                 </h4>
                 <div class="shop-list-item-bottom">
-                    <span class="item-price">20</span>
+                    <span class="item-price">¥ {{shop.normal_price / 100 }}</span>
                     <span class="item-counter">已经拼555件</span>
                     <span class="item-user">
                         <img src="./home/user1.jpeg" alt="" />
@@ -21,37 +21,25 @@
                     </span>
                 </div>
             </li>
-            <li class="shop-list-item">
-                <img src="./home/02.jpeg" alt="" width="100%" />
-                <h4 class="shop-list-item-title">
-                    梵雪妮大码女装2018秋装新款中长款七分袖风衣修身气质外套连衣裙
-                </h4>
-                <div class="shop-list-item-bottom">
-                    <span class="item-price">89.9</span>
-                    <span class="item-counter">已经拼7549件</span>
-                    <span class="item-user">
-                        <img src="./home/user3.jpeg" alt="" /><img
-                            src="./home/user4.jpeg"
-                            alt=""
-                        />
-                    </span>
-                    <span class="item-buy">
-                        <button>去拼单></button>
-                    </span>
-                </div>
-            </li>
         </ul>
     </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
     name: 'HotShopList',
     data() {
         return {}
     },
+    mounted() {
+        
+    },
     methods: {},
-    computed: {}
+    computed: {
+        ...mapState(['homeshoplist']),
+    }
 }
 </script>
 

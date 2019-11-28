@@ -120,7 +120,7 @@ module.exports = {
         // proxy: null,
         proxy: {
             '/api': {
-                target: 'http://localhost:1688',
+                target: 'http://127.0.0.1:1688',
                 changeOrigin: true, // 允许websockets跨域
                 // ws: true,
                 pathRewrite: {

@@ -1,6 +1,9 @@
-# 仿京东商城
+# 仿电子商城
 
 ![image](./src/assets/readmeImages/main.png)
+
+
+
 
 ## Project setup
 ```

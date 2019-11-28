@@ -48,7 +48,6 @@ export default {
         this.$store.dispatch('reqHomeNav');
         this.getBarXWidth();
         this.bindEvent();
-        // console.log(this.$store.state.homenav)
     },
     computed: {
         innerStyle() {

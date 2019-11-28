@@ -1,6 +1,6 @@
 <template>
     <div id="hot">
-        <div class="swiper-container" v-if="homecasual.length>0">
+        <div class="swiper-container" v-if="homecasual.length > 0">
             <div class="swiper-wrapper">
                     <div class="swiper-slide" v-for="(casual, index) in homecasual" :key="index">
                         <img :src="casual.imgurl" alt width="100%" />
@@ -17,22 +17,24 @@
 </template>
 
 <script>
+
 import Swiper from 'swiper';
 import 'swiper/css/swiper.min.css';
 import HotNav from './HotNav';
 import HotShopList from './HotShopList';
 import { mapState } from 'vuex';
+
 export default {
     name: 'Hot',
     data() {
         return {};
     },
     computed: {
-        ...mapState(['homecasual'])
+        ...mapState(['homecasual']),
     },
     mounted() {
         this.$store.dispatch('reqHomeCasual');
-        // this.homecasual = this.$store.state.homecasual;
+        this.$store.dispatch('reqHomeShopList');
     },
     watch: {
         homecasual() {
@@ -54,6 +56,7 @@ export default {
         HotShopList
     }
 };
+
 </script>
 
 <style lang="stylus" scoped>
