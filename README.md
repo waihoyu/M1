@@ -2,6 +2,7 @@
 
 ![image](./src/assets/readmeImages/main.png)
 
+![image](./src/assets/readmeImages/recommend.png)
 
 
 

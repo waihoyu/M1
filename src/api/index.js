@@ -21,3 +21,13 @@ export const getHomeShopList = ()=>{
     let promise = ajax(BASE_URL + '/api/homeshoplist');
     return  promise;
 };
+
+export const getrRcommendShopList = ()=>{
+    let promise = ajax(BASE_URL + '/api/recommendshoplist');
+    return  promise;
+};
+
+export const getRecommendShopList = ()=>{
+    let promise = ajax(BASE_URL + '/api/recommendshoplist');
+    return  promise;
+};
