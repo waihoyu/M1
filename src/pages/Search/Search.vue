@@ -1,15 +1,15 @@
 <template>
     <div class="search">
-        <search-nav></search-nav>
+        <search-nav :showSearchPanel="showSearchPanel"></search-nav>
         <div class="shop">
             <div class="menu-wrapper">
-                <ul >
+                <ul>
                     <li
                         ref="menuList"
                         class="menu-item "
-                        :class="{ current: index === curentIndex }"
                         v-for="(good, index) in rearchgoods"
                         :key="index"
+                        :class="{ current: index === curentIndex }"
                         @click="clickLeftLi(index)"
                     >
                         <span>{{ good.name }}</span>
@@ -17,7 +17,7 @@
                 </ul>
             </div>
             <div class="shop-wrapper">
-                <ul >
+                <ul>
                     <li
                         class="shops-li"
                         v-for="(good, index) in rearchgoods"
@@ -49,11 +49,17 @@
                 </ul>
             </div>
         </div>
+        <search-panel
+            v-if="isShow"
+            :showSearchPanel="showSearchPanel"
+        ></search-panel>
     </div>
 </template>
 
 <script>
 import SearchNav from './children/SearchNav';
+import SearchPanel from './children/SearchPanel';
+
 import { mapState } from 'vuex';
 import BScroll from 'better-scroll';
 export default {
@@ -61,7 +67,8 @@ export default {
     data() {
         return {
             scrollY: 0,
-            rightTops: []
+            rightTops: [],
+            isShow: false
         };
     },
     computed: {
@@ -72,34 +79,36 @@ export default {
                 this._changeLeftScroll(index);
                 return scrollY >= top && scrollY < rightTops[index + 1];
             });
-        }
+        },
+ 
     },
     mounted() {
         this.$store.dispatch('reqRearchGoods');
     },
     components: {
-        SearchNav
+        SearchNav,
+        SearchPanel
     },
     methods: {
+       showSearchPanel(opt) {
+            this.isShow = opt;
+        },        
         _initScroll() {
             this.leftScroll = new BScroll('.menu-wrapper', {});
             this.rightScroll = new BScroll('.shop-wrapper', {
                 probeType: 3
             });
             this.rightScroll.on('scroll', pos => {
-                this.scrollY = Math.abs(Math.round(pos.y));
+                this.scrollY = Math.abs(Math.round(pos.y)) + 400;
             });
         },
         _initRightTops() {
             let tempArr = [];
             let top = 0;
             tempArr.push(top);
-            let alllis = this.$el.getElementsByClassName(
-                'shops-li'
-            );
+            let alllis = this.$el.getElementsByClassName('shops-li');
             Array.prototype.slice.call(alllis).forEach(li => {
                 top += li.clientHeight;
-                // console.log(top)
                 tempArr.push(top);
             });
             this.rightTops = tempArr;
@@ -108,7 +117,6 @@ export default {
             let menuLists = this.$refs.menuList;
             let el = menuLists[index];
             this.leftScroll.scrollToElement(el, 300, 0, -100);
-            // this.leftScroll.scrollTo(0, -this.scrollY, 300);
         },
         clickLeftLi(index) {
             this.scrollY = this.rightTops[index];
@@ -132,14 +140,15 @@ export default {
     background #F5F5F5
     width 100%
     height 100%
+    overflow hidden
     .shop
         display flex
         position absolute
-        background-color red
         width 100%
         top 60px
         bottom 50px
-        width 100%
+        height  100%
+        overflow hidden
         .menu-wrapper
             background-color #e0e0e0
             width: 80px
@@ -166,6 +175,7 @@ export default {
         .shop-wrapper
             flex 1
             background-color #fff
+
             .shops-title
                 display flex
                 flex-direction row
@@ -205,5 +215,5 @@ export default {
                     img
                         width 60%
                         height 60%
-                        margin-bottom 5px
+                        margin-bottom 5px   
 </style>

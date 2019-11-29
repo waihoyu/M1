@@ -1,7 +1,7 @@
 
 
 <template>
-    <div class="search-nav">
+    <div class="search-nav" @click.prevent="showSearchPanel(true)">
         <a href="" class="search-nav-icon">
             <img src="../images/search.png" alt="" width="25px">
             <span>秋上衣</span>
@@ -11,7 +11,10 @@
 
 <script>
     export default {
-        name:"SearchNav"
+        name:"SearchNav",
+        props:{
+            showSearchPanel: Function
+        }
     }
 </script>
 
