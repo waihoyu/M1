@@ -4,34 +4,48 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 function resolve(dir) {
     return path.join(__dirname, dir);
 }
-
 module.exports = {
-    // 基本路径
     publicPath: process.env.NODE_ENV === 'production' ? './' : './',
-    // 输出文件目录
-    outputDir: 'dist', // 默认dist
-    // 用于嵌套生成的静态资产（js,css,img,fonts）目录
+    outputDir: 'dist',
     assetsDir: 'static',
-    // 指定生成的 index.html 的输出路径 (相对于 outputDir)。也可以是一个绝对路径
-    indexPath: 'index.html', // Default: 'index.html'
     filenameHashing: true,
-    // 构建多页时使用
-    pages: undefined,
-    // eslint-loader是否在保存的时候检查
+    // When building in multi-pages mode, the webpack config will contain different plugins
+    // (there will be multiple instances of html-webpack-plugin and preload-webpack-plugin).
+    // Make sure to run vue inspect if you are trying to modify the options for those plugins.
+    pages: {
+        index: {
+            // entry for the pages
+            entry: 'src/main.js',
+            // the source template
+            template: 'public/index.html',
+            // output as dist/index.html
+            filename: 'index.html',
+            // when using title option,
+            // template title tag needs to be <title><%= htmlWebpackPlugin.options.title %></title>
+            title: '京东商城',
+            // chunks to include on this pages, by default includes
+            // extracted common chunks and vendor chunks.
+            chunks: ['chunk-vendors', 'chunk-common', 'index']
+        }
+        // when using the entry-only string format,
+        // template is inferred to be `public/subpage.html`
+        // and falls back to `public/index.html` if not found.
+        // Output filename is inferred to be `subpage.html`.
+        // subpage: ''
+    },
+    // eslint-loader 是否在保存的时候检查
     lintOnSave: true,
     // 是否使用包含运行时编译器的Vue核心的构建
     runtimeCompiler: false,
-    // 默认情况下 babel-loader 会忽略所有 node_modules 中的文件。如果你想要通过 Babel 显式转译一个依赖，可以在这个选项中列出来
+    // 默认情况下 babel-loader 忽略其中的所有文件 node_modules
     transpileDependencies: [],
-    // 如果你不需要生产环境的 source map，可以将其设置为 false 以加速生产环境构建。
+    // 生产环境 sourceMap
     productionSourceMap: false,
-    // 如果这个值是一个对象，则会通过 webpack-merge 合并到最终的配置中。如果这个值是一个函数，则会接收被解析的配置作为参数。该函数及可以修改配置并不返回任何东西，也可以返回一个被克隆或合并过的配置版本。
+    // cors 相关 https://jakearchibald.com/2017/es-modules-in-browsers/#always-cors
+    // corsUseCredentials: false,
+    // webpack 配置，键值对象时会合并配置，为方法时会改写配置
+    // https://cli.vuejs.org/guide/webpack.html#simple-configuration
     configureWebpack: config => {
-        if (process.env.NODE_ENV === 'production') {
-            // 为生产环境修改配置...
-        } else {
-            // 为开发环境修改配置...
-        }
         optimization: {
             minimizer: [
                 new UglifyJsPlugin({
@@ -46,7 +60,8 @@ module.exports = {
             ];
         }
     },
-    // 是一个函数，会接收一个基于 webpack-chain 的 ChainableConfig 实例。允许对内部的 webpack 配置进行更细粒度的修改。
+    // webpack 链接 API，用于生成和修改 webapck 配置
+    // https://github.com/mozilla-neutrino/webpack-chain
     chainWebpack: config => {
         if (process.env.NODE_ENV === 'production') {
             // 为生产环境修改配置...
@@ -74,7 +89,8 @@ module.exports = {
         config.resolve.extensions.merge(['.js', '.jsx', '.vue', '.json']).end();
         config.resolve.symlinks(true);
     },
-    // css相关配置
+
+    // 配置高于chainWebpack中关于 css loader 的配置
     css: {
         // 是否开启支持 foo.module.css 样式
         modules: false,
@@ -92,7 +108,9 @@ module.exports = {
             }
         }
     },
-    // webpack-dev-server 相关配置
+
+    // All options for webpack-dev-server are supported
+    // https://webpack.js.org/configuration/dev-server/
     devServer: {
         open: true,
         host: '0.0.0.0',
@@ -120,4 +138,4 @@ module.exports = {
     pwa: {},
     // 第三方插件配置
     pluginOptions: {}
-}
+};

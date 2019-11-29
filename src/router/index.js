@@ -25,7 +25,7 @@ import TabType from '../config/tab-type';
 Vue.use(Router);
 
 export default new Router({
-    mode: 'history',
+    // mode: 'history',
     linkActiveClass: '',
     linkExactActiveClass: '',
     routes: [{
@@ -42,23 +42,22 @@ export default new Router({
             path: '/home',
             name: 'home',
             component: Home,
-            children: [
-                {
+            children: [{
                     path: '/home/',
                     component: Hot,
                     params: {
                         id: TabType.HOT
                     },
-                    meta:{
+                    meta: {
                         id: TabType.HOT
                     }
-                },{
+                }, {
                     path: '/home/hot',
                     component: Hot,
                     params: {
                         id: TabType.HOT
                     },
-                    meta:{
+                    meta: {
                         id: TabType.HOT
                     }
                 },
@@ -68,7 +67,7 @@ export default new Router({
                     params: {
                         id: TabType.DRESS
                     },
-                    meta:{
+                    meta: {
                         id: TabType.DRESS
                     }
                 },
@@ -78,7 +77,7 @@ export default new Router({
                     params: {
                         id: TabType.BOX
                     },
-                    meta:{
+                    meta: {
                         id: TabType.BOX
                     }
                 },
@@ -88,7 +87,7 @@ export default new Router({
                     params: {
                         id: TabType.MYBABY
                     },
-                    meta:{
+                    meta: {
                         id: TabType.MYBABY
                     }
                 },
@@ -98,7 +97,7 @@ export default new Router({
                     params: {
                         id: TabType.GENERAL
                     },
-                    meta:{
+                    meta: {
                         id: TabType.GENERAL
                     }
                 },
@@ -108,7 +107,7 @@ export default new Router({
                     params: {
                         id: TabType.FOOD
                     },
-                    meta:{
+                    meta: {
                         id: TabType.FOOD
                     }
                 },
@@ -118,7 +117,7 @@ export default new Router({
                     params: {
                         id: TabType.SHIRT
                     },
-                    meta:{
+                    meta: {
                         id: TabType.SHIRT
                     }
                 },
@@ -128,7 +127,7 @@ export default new Router({
                     params: {
                         id: TabType.MAN
                     },
-                    meta:{
+                    meta: {
                         id: TabType.ELE
                     }
                 },
@@ -138,7 +137,7 @@ export default new Router({
                     params: {
                         id: TabType.ELE
                     },
-                    meta:{
+                    meta: {
                         id: TabType.ELE
                     }
                 }
@@ -168,10 +167,10 @@ export default new Router({
             path: '/mine',
             name: 'mine',
             component: Mine
-        }, 
+        },
         {
-            path:'*',
-            redirect:'/home'
+            path: '*',
+            redirect: '/home'
         }
     ]
 });
