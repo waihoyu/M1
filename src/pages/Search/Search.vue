@@ -79,8 +79,7 @@ export default {
                 this._changeLeftScroll(index);
                 return scrollY >= top && scrollY < rightTops[index + 1];
             });
-        },
- 
+        }
     },
     mounted() {
         this.$store.dispatch('reqRearchGoods');
@@ -90,9 +89,9 @@ export default {
         SearchPanel
     },
     methods: {
-       showSearchPanel(opt) {
+        showSearchPanel(opt) {
             this.isShow = opt;
-        },        
+        },
         _initScroll() {
             this.leftScroll = new BScroll('.menu-wrapper', {});
             this.rightScroll = new BScroll('.shop-wrapper', {
@@ -215,5 +214,5 @@ export default {
                     img
                         width 60%
                         height 60%
-                        margin-bottom 5px   
+                        margin-bottom 5px
 </style>
