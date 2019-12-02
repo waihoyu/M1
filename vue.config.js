@@ -64,6 +64,65 @@ module.exports = {
             .rule('eslint')
             .exclude.add('/Users/Mac/Downloads/FE/community_built-in/src/lib')
             .end();
+        config.module
+            .rule('scss')
+            .test(/\.scss$/)
+            .use('scss-loader')
+            .loader('scss-loader')
+            .end();
+        config.module
+            .rule('images')
+            .test(/\.(png|jpe?g|gif|webp)(\?.*)?$/)
+            .use('url-loader')
+            .loader('url-loader')
+            .tap(options => Object.assign(options, {
+                limit: 20000000
+            }));
+        // config.module
+        //     .rule('images')
+        //     .use('image-webpack-loader')
+        //     .loader('image-webpack-loader')
+        //     .options({
+        //         mozjpeg: {
+        //             progressive: true,
+        //             quality: 65
+        //         },
+        //         optipng: {
+        //             enabled: false
+        //         },
+        //         pngquant: {
+        //             quality: [0.65, 0.9],
+        //             speed: 4
+        //         },
+        //         gifsicle: {
+        //             interlaced: false
+        //         },
+        //         webp: {
+        //             quality: 75
+        //         }
+        // });
+        // config.module
+        //     .rule('images')
+        //     .test('/\.(png|jpe?g|gif|webp)(\?.*)?$/')
+        //     .use('url-loader')
+        //     .loader('url-loader')
+        //     .tap(options => {
+        //         // 修改它的选项...
+        //         options.limit = 40000;
+        //         return options
+        //     }).end();
+        // config.module
+        //     .rule('url-loader')
+        //     .test('/\.(png|jpe?g|gif|webp)(\?.*)?$/')
+        //     .use('url-loader')
+        //     .loader('file-loader')
+        //     .tap(options => {
+        //         // 修改它的选项...
+        //         options.name = 'static/img/[name].[hash:8].[ext]';
+        //         options.limit = 40000;
+        //         return options
+        //     }).end();
+
         config.resolve.alias
             .set('@', resolve('src'))
             .set('assets', resolve('src/assets'))
@@ -119,5 +178,32 @@ module.exports = {
     // https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa
     pwa: {},
     // 第三方插件配置
-    pluginOptions: {}
+    pluginOptions: {},
+    css: {
+        loaderOptions: {
+            // 给 sass-loader 传递选项
+            sass: {
+                // @/ 是 src/ 的别名
+                // 所以这里假设你有 `src/variables.sass` 这个文件
+                // 注意：在 sass-loader v7 中，这个选项名是 "data"
+                prependData: `@import "~@/variables.sass"`
+            },
+            // 默认情况下 `sass` 选项会同时对 `sass` 和 `scss` 语法同时生效
+            // 因为 `scss` 语法在内部也是由 sass-loader 处理的
+            // 但是在配置 `data` 选项的时候
+            // `scss` 语法会要求语句结尾必须有分号，`sass` 则要求必须没有分号
+            // 在这种情况下，我们可以使用 `scss` 选项，对 `scss` 语法进行单独配置
+            scss: {
+                prependData: `@import "~@/variables.scss";`
+            },
+            // 给 less-loader 传递 Less.js 相关选项
+            less: {
+                // http://lesscss.org/usage/#less-options-strict-units `Global Variables`
+                // `primary` is global variables fields name
+                globalVars: {
+                    primary: '#fff'
+                }
+            }
+        }
+    }
 }

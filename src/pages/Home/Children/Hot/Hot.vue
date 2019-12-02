@@ -2,22 +2,25 @@
     <div id="hot">
         <div class="swiper-container" v-if="homecasual.length > 0">
             <div class="swiper-wrapper">
-                    <div class="swiper-slide" v-for="(casual, index) in homecasual" :key="index">
-                        <img :src="casual.imgurl" alt width="100%" />
-                    </div>
+                <div
+                    class="swiper-slide"
+                    v-for="(casual, index) in homecasual"
+                    :key="index"
+                >
+                    <img :src="casual.imgurl" alt width="100%" />
+                </div>
             </div>
             <div class="swiper-pagination"></div>
         </div>
         <hot-nav class="hot-nav"> </hot-nav>
         <div class="hot-ad">
-            <img src="./home/s2.png" alt="" />
+            <img src="../../../../assets/home/s2.png" alt="" />
         </div>
         <hot-shop-list class="hot-shop-list"></hot-shop-list>
     </div>
 </template>
 
 <script>
-
 import Swiper from 'swiper';
 import 'swiper/css/swiper.min.css';
 import HotNav from './HotNav';
@@ -30,7 +33,7 @@ export default {
         return {};
     },
     computed: {
-        ...mapState(['homecasual']),
+        ...mapState(['homecasual'])
     },
     mounted() {
         this.$store.dispatch('reqHomeCasual');
@@ -56,7 +59,6 @@ export default {
         HotShopList
     }
 };
-
 </script>
 
 <style lang="stylus" scoped>

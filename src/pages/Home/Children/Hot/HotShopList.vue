@@ -1,20 +1,23 @@
 <template>
     <div id="hot-shop-container" v-if="homeshoplist.length > 0">
         <ul class="shop-list">
-            <li class="shop-list-item" v-for="(shop,index) in homeshoplist" :key="index">
-                <img :src="shop.image_url" width="100%" alt=""/>
+            <li
+                class="shop-list-item"
+                v-for="(shop, index) in homeshoplist"
+                :key="index"
+            >
+                <img :src="shop.image_url" width="100%" alt="" />
                 <h4 class="shop-list-item-title">
-                    {{shop.goods_name}}
+                    {{ shop.goods_name }}
                 </h4>
                 <div class="shop-list-item-bottom">
-                    <span class="item-price">¥ {{shop.normal_price / 100 }}</span>
+                    <span class="item-price"
+                        >¥ {{ shop.normal_price / 100 }}</span
+                    >
                     <span class="item-counter">已经拼555件</span>
                     <span class="item-user">
-                        <img src="./home/user1.jpeg" alt="" />
-                        <img
-                            src="./home/user2.jpeg"
-                            alt=""
-                        />
+                        <img src="../../../../assets/home/user1.jpeg" alt="" />
+                        <img src="../../../../assets/home/user2.jpeg" alt="" />
                     </span>
                     <span class="item-buy">
                         <button>去拼单></button>
@@ -31,16 +34,14 @@ import { mapState } from 'vuex';
 export default {
     name: 'HotShopList',
     data() {
-        return {}
+        return {};
     },
-    mounted() {
-        
-    },
+    mounted() {},
     methods: {},
     computed: {
-        ...mapState(['homeshoplist']),
+        ...mapState(['homeshoplist'])
     }
-}
+};
 </script>
 
 <style lang="stylus" scoped>
@@ -54,7 +55,7 @@ export default {
             display flex
             flex-direction column
             .shop-list-item-title
-                color orange 
+                color orange
                 line-height 22px
                 width 94%
                 margin-left 3%
@@ -72,7 +73,7 @@ export default {
                     text-align center
                     font-size 18px
                     font-weight bold
-                .item-counter 
+                .item-counter
                     font-size 12px
                     flex 2
                     color #cccccc
@@ -80,7 +81,7 @@ export default {
                     display flex
                     justify-content center
                     align-items center
-                    flex 1 
+                    flex 1
                     // font-size 22px
                     // line-height 50px
                     img
@@ -91,7 +92,7 @@ export default {
                         margin-left -6px
                 .item-buy
                     flex 2
-                    button 
+                    button
                         width 80%
                         // border solid 1px red
                         color white
@@ -100,7 +101,7 @@ export default {
                         align-items center
                         margin-left 10px
                         background-color red
-                        border-radius 10px   
-                        margin-bottom 3px  
-                        border none    
+                        border-radius 10px
+                        margin-bottom 3px
+                        border none
 </style>
