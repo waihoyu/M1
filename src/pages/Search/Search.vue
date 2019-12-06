@@ -140,6 +140,7 @@ export default {
     width 100%
     height 100%
     overflow hidden
+    font-size 14px
     .shop
         display flex
         position absolute
@@ -174,7 +175,6 @@ export default {
         .shop-wrapper
             flex 1
             background-color #fff
-
             .shops-title
                 display flex
                 flex-direction row
@@ -210,7 +210,7 @@ export default {
                     height 90px
                     justify-content center
                     align-items center
-                    font-size 14px
+                    font-size 12px
                     img
                         width 60%
                         height 60%

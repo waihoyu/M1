@@ -11,6 +11,14 @@ import 'mint-ui/lib/style.css';
 import router from './router';
 import FastClick from 'fastclick';
 import animate from 'animate.css'
+import {
+    Avatar,
+    Toast,
+    Dialog
+} from '@nutui/nutui'
+Avatar.install(Vue);
+Toast.install(Vue);
+Dialog.install(Vue);
 Vue.use(animate)
 FastClick.attach(document.body);
 Vue.component(Cell.name, Cell);

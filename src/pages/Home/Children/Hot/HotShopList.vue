@@ -56,6 +56,7 @@ export default {
             flex-direction column
             .shop-list-item-title
                 color orange
+                font-size 14px
                 line-height 22px
                 width 94%
                 margin-left 3%
@@ -82,8 +83,6 @@ export default {
                     justify-content center
                     align-items center
                     flex 1
-                    // font-size 22px
-                    // line-height 50px
                     img
                         width 30px
                         height 30px

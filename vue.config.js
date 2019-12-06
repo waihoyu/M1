@@ -76,7 +76,7 @@ module.exports = {
             .use('url-loader')
             .loader('url-loader')
             .tap(options => Object.assign(options, {
-                limit: 20000000
+                limit: 1
             }));
         // config.module
         //     .rule('images')
@@ -178,7 +178,13 @@ module.exports = {
     // https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa
     pwa: {},
     // 第三方插件配置
-    pluginOptions: {},
+    pluginOptions: {
+        // new webpack.DefinePlugin()
+        foo: {
+            // 插件可以作为 `options.pluginOptions.foo` 访问这些选项。
+            vueName: 'Vue.js'
+        }
+    },
     css: {
         loaderOptions: {
             // 给 sass-loader 传递选项

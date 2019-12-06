@@ -1,28 +1,92 @@
-import {getHomeCasual, getHomeNav, getHomeShopList, getRecommendShopList, getRearchGoods} from '../api';
-import {HOME_CASUAL, HOME_NAV, HOME_SHOP_LIST, RECOMMEND_SHOP_LIST, REARCH_GOODS} from './mutation-types';
+import {
+    getHomeCasual,
+    getHomeNav,
+    getHomeShopList,
+    getRecommendShopList,
+    getRearchGoods,
+    getUserInfo,
+    getHotAds
+} from '../api';
+
+import {
+    HOME_CASUAL,
+    HOME_NAV,
+    HOME_SHOP_LIST,
+    RECOMMEND_SHOP_LIST,
+    REARCH_GOODS,
+    USER_INFO,
+    HOT_ADS
+} from './mutation-types';
 
 export default {
-    async reqHomeCasual({commit}){
+    async reqHomeCasual({
+        commit
+    }) {
         const result = await getHomeCasual();
-        commit(HOME_CASUAL, {homecasual: result.message});
+        commit(HOME_CASUAL, {
+            homecasual: result.message
+        });
     },
-    async reqHomeNav({commit}){
+    async reqHomeNav({
+        commit
+    }) {
         const result = await getHomeNav();
-        commit(HOME_NAV, {homenav: result.message});
+        commit(HOME_NAV, {
+            homenav: result.message
+        });
+    },
+    //得到热销广告
+    async reqHotAds({
+        commit
+    }) {
+        const result = await getHotAds();
+        commit(HOT_ADS, {
+            hotads: result.message
+        });
     },
     //商品列表
-    async reqHomeShopList({commit}){
+    async reqHomeShopList({
+        commit
+    }) {
         const result = await getHomeShopList();
-        commit(HOME_SHOP_LIST, {homeshoplist: result.message.goods_list});
+        commit(HOME_SHOP_LIST, {
+            homeshoplist: result.message.goods_list
+        });
     },
-    async reqRecommendShopList({commit})
-    {
+
+    async reqRecommendShopList({
+        commit
+    }) {
         const result = await getRecommendShopList();
-        commit(RECOMMEND_SHOP_LIST, {recommendshoplist: result.message.data});
+        commit(RECOMMEND_SHOP_LIST, {
+            recommendshoplist: result.message.data
+        });
     },
-    async reqRearchGoods({commit})
-    {
+    async reqRearchGoods({
+        commit
+    }) {
         const result = await getRearchGoods();
-        commit(REARCH_GOODS, {rearchgoods: result.message.data});
-    }
+        commit(REARCH_GOODS, {
+            rearchgoods: result.message.data
+        });
+    },
+    async reqUserInfo({
+        commit
+    }) {
+        const result = await getUserInfo();
+        if (200 === result.success_code) {
+            commit(USER_INFO, {
+                userinfo: result
+            });
+        }
+    },
+    // 6. 同步用户的信息
+    syncUserInfo({
+        commit
+    }, userinfo) {
+        console.log(userinfo)
+        commit(USER_INFO, {
+            userinfo
+        });
+    },
 };

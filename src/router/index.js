@@ -1,8 +1,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+
 import Chat from '../pages/Chat/Chat.vue';
 import Home from '../pages/Home/Home.vue';
 import Mine from '../pages/Mine/Mine.vue';
+import Login from '../pages/Login/Login.vue';
+
 import Recommand from '../pages/Recommand/Recommand.vue';
 import Search from '../pages/Search/Search.vue';
 import Hot from '../pages/Home/Children/Hot/Hot';
@@ -167,6 +170,12 @@ export default new Router({
             path: '/mine',
             name: 'mine',
             component: Mine
+        },
+
+        {
+            path: '/login',
+            name: 'login',
+            component: Login
         },
         {
             path: '*',

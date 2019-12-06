@@ -49,7 +49,6 @@ export default {
     },
     methods: {
         change(item, index) {
-            //   this.$router.replace(this.subRouteUrl[index]);
             this.$router.replace(item.path);
             this.selectedId = index;
         }

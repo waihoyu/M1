@@ -21,6 +21,19 @@ export default {
 </script>
 
 <style>
+@import '../src/assets/css/iconfont.css';
+* {
+    text-decoration: none;
+}
+html {
+    font-size: 16px;
+    /* font-size: 5.33333vw; */
+}
+@media screen and (max-width: 320px) {
+    html {
+        font-size: 17.06667px;
+    }
+}
 #app {
     height: 100%;
     width: 100%;

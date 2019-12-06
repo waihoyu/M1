@@ -104,7 +104,7 @@ export default {
     @media screen and (min-width: 1200px) {
         height 90px
     }
-    height 180px
+    height 150px
     background #fff
     position relative
     .hot-nav-content
@@ -116,20 +116,21 @@ export default {
             height 90px
         }
         width 660px
-        height 180px
+        height 130px
         display flex
         flex-wrap wrap
         .inner-item
-            width 80px
-            height 80px
+            width 64px
+            height 62.77px
             display flex
             flex-direction column
             justify-content center
             align-items center
-            font-size 14px
+            font-size 10.24px
             color #666666
             img
-                width 40%
+                width 34.13px
+                height 34.13px
                 margin-bottom 5px
   .hot-nav-content::-webkit-scrollbar
         display none
