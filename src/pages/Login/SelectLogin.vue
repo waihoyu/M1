@@ -7,6 +7,9 @@
         ></nut-avatar>
         <h4>选择登录方式</h4>
         <router-link tag="button" to="/login">手机登录</router-link>
+        <router-link tag="button" class="register" to="/register"
+            >用户注册</router-link
+        >
     </div>
 </template>
 
@@ -15,10 +18,10 @@ export default {
     name: 'SelectLogin',
     data() {
         return {
-            login_avatar: require('../../assets/img/login_avatar.png')
-        };
-    }
-};
+            login_avatar: require('../../assets/img/login_avatar.png'),
+        }
+    },
+}
 </script>
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
@@ -34,6 +37,7 @@ export default {
     flex-direction column
     justify-content center
     align-items center
+    font-size 14px
     .avatar-select
         width 120px
         height 120px
@@ -44,9 +48,11 @@ export default {
         background-color #c63520
         border none
         border-radius 5px
-        font-size 20px
+        font-size 16px
         color #fff
         margin-top 30px
+    .register
+        background-color #999
     .bottom
         position fixed
         top 130px

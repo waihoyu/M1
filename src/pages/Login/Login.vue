@@ -67,7 +67,7 @@
                             <div
                                 class="cancel-password"
                                 :class="{
-                                    cancelPassword: code.length <= 0
+                                    cancelPassword: code.length <= 0,
                                 }"
                                 @click.prevent="clearPassword"
                             >
@@ -150,84 +150,84 @@
 </template>
 
 <script>
-import { getPhoneCode, phoneCodeLogin, pwdLogin } from './../../api/index';
-import { mapActions } from 'vuex';
+import { getPhoneCode, phoneCodeLogin, pwdLogin } from './../../api/index'
+import { mapActions } from 'vuex'
 export default {
     name: 'Login',
     data() {
         return {
             loginMode: true, // 登录方式, true 手机验证码登录, flase 账号登录
-            phone: '', // 手机号码
+            phone: '13701343809', // 手机号码
             countDown: 0, // 倒计时
-            code: '', // 验证码
+            code: '123456', // 验证码
             user_name: '', // 用户名
             pwd: '', // 密码
             pwdMode: true, // 密码的显示方式, true 密文  false 明文
-            captcha: '', // 图形验证码
+            captcha: '123456', // 图形验证码
             userinfo: {},
             loginTop: require('../../assets/img/login_top.png'),
             cancelPassword: true,
             hide_pwd: require('./images/hide_pwd.png'),
-            show_pwd: require('./images/show_pwd.png')
-        };
+            show_pwd: require('./images/show_pwd.png'),
+        }
     },
     computed: {
         phoneRight() {
-            return /^1[34578]\d{9}$/.test(this.phone);
-        }
+            return /^1[34578]\d{9}$/.test(this.phone)
+        },
     },
     methods: {
-        clearPassword() {
-            this.code = '';
-        },
         ...mapActions(['syncUserInfo']),
+        //清空密码
+        clearPassword() {
+            this.code = ''
+        },
+        //回到主界面
         backHome() {
-            // this.$router.replace('home');
-            this.$router.push({ path: '/home' });
+            this.$router.push({ path: '/home' })
         },
-        // 1. 处理登录的方式
+        //处理登录的方式
         dealLoginMode(flag) {
-            this.loginMode = flag;
+            this.loginMode = flag
         },
-        // 2. 获取短信验证码
+        //获取短信验证码
         async getVerifyCode() {
             // 2.1 开启倒计时
             if (this.phoneRight) {
-                this.countDown = 60;
+                this.countDown = 60
                 // 2.2 设置定时器
                 this.intervalId = setInterval(() => {
-                    this.countDown--;
+                    this.countDown--
                     if (this.countDown === 0) {
-                        clearInterval(this.intervalId);
+                        clearInterval(this.intervalId)
                     }
-                }, 1000);
+                }, 1000)
                 // 2.3 获取短信验证码
-                const result = await getPhoneCode(this.phone);
-                console.log(result);
+                const result = await getPhoneCode(this.phone)
+                console.log(result)
                 // 2.4 获取验证码失败
                 if (result.err_code === 0) {
-                    // console.log(result.message);
-                    Toast({
+                    this.$toast.warn({
                         message: result.message,
                         position: 'center',
-                        duration: 3000
-                    });
+                        duration: 3000,
+                    })
                     // 2.5 后续处理
                     setTimeout(() => {
-                        clearInterval(this.intervalId);
-                        this.countDown = 0;
-                    }, 3000);
+                        clearInterval(this.intervalId)
+                        this.countDown = 0
+                    }, 3000)
                 }
             }
         },
         // 3. 密码的显示方式
         dealPwdMode(flag) {
-            this.pwdMode = flag;
+            this.pwdMode = flag
         },
         // 4. 获取图形验证码
         getCaptcha() {
             this.$refs.captcha.src =
-                'http://localhost:1688/api/captcha?time=' + new Date();
+                'http://localhost:1688/api/captcha?time=' + new Date()
         },
         // 5. 登录
         async login() {
@@ -235,73 +235,71 @@ export default {
             if (this.loginMode) {
                 // 验证码登录
                 if (!this.phone) {
-                    Toast('请输入手机号码!');
-                    return;
+                    this.$toast.warn('请输入手机号码!')
+                    return
                 } else if (!this.phoneRight) {
-                    Toast('请输入正确的手机号码!');
-                    return;
+                    this.$toast.warn('请输入正确的手机号码!')
+                    return
                 }
-
                 if (!this.code) {
-                    Toast('请输入验证码!');
-                    return;
+                    this.$toast.warn('请输入验证码!')
+                    return
                 } else if (!/^\d{6}$/gi.test(this.code)) {
-                    Toast('请输入正确的验证码!');
-                    return;
+                    this.$toast.warn('请输入正确的验证码!')
+                    return
                 }
                 // 5.2 手机验证码登录
-                const result = await phoneCodeLogin(this.phone, this.code);
-
+                const result = await phoneCodeLogin(this.phone, this.code)
                 if (result.success_code === 200) {
-                    this.userinfo = result.data;
+                    this.userinfo = result.data
                 } else {
                     this.userinfo = {
-                        message: '登录失败, 手机号码或验证码不正确!'
-                    };
+                        message: '登录失败, 手机号码或验证码不正确!',
+                    }
                 }
             } else {
                 // 账号和密码的登录
                 if (!this.user_name) {
-                    Toast('请输入用户名!');
-                    return;
+                    this.$toast.warn('请输入用户名!')
+                    return
                 } else if (!this.pwd) {
-                    Toast('请输入密码!');
-                    return;
+                    this.$toast.warn('请输入密码!')
+                    return
                 } else if (!this.captcha) {
-                    Toast('请输入验证码!');
-                    return;
+                    this.$toast.warn('请输入验证码!')
+                    return
                 }
                 // 5.2 发起请求
                 const result = await pwdLogin(
                     this.user_name,
                     this.pwd,
-                    this.captcha
-                );
-
+                    this.captcha,
+                )
                 if (result.success_code === 200) {
-                    this.userinfo = result.data;
+                    this.userinfo = result.data
                 } else {
                     this.userinfo = {
-                        message: '登录失败, 用户名和密码不正确!'
-                    };
+                        message: '登录失败, 用户名和密码不正确!',
+                    }
                 }
             }
 
             // 6. 后续的处理
             if (this.userinfo._id) {
-                console.log(this.userinfo)
-                this.syncUserInfo(this.userinfo);
-                this.$router.push({ path: '/mine' });
+                this.$store.dispatch('syncUserInfo', {
+                    userinfo: this.userinfo,
+                })
+                this.$router.push({ path: '/mine' })
             } else {
                 // 6.1 同步用户的信息
                 // this.syncuserinfo(this.userinfo);
                 // 6.2 回到主界面
-                console.log('回到主界面');
-                this.$router.push({ path: '/mine' });
+                // console.log('回到主界面');
+                this.$router.push({ path: '/mine' })
             }
-        }
-    }
-};
+        },
+    },
+}
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">

@@ -1,150 +1,153 @@
-import Vue from 'vue';
-import Router from 'vue-router';
+import Vue from 'vue'
+import Router from 'vue-router'
 
-import Chat from '../pages/Chat/Chat.vue';
-import Home from '../pages/Home/Home.vue';
-import Mine from '../pages/Mine/Mine.vue';
-import Login from '../pages/Login/Login.vue';
+import Chat from '../pages/Chat/Chat.vue'
+import Home from '../pages/Home/Home.vue'
+import Mine from '../pages/Mine/Mine.vue'
+import Login from '../pages/Login/Login.vue'
 
-import Recommand from '../pages/Recommand/Recommand.vue';
-import Search from '../pages/Search/Search.vue';
-import Hot from '../pages/Home/Children/Hot/Hot';
-import Dress from '../pages/Home/Children/Dress';
-import Box from '../pages/Home/Children/Box';
-import Man from '../pages/Home/Children/Man';
-import Shirt from '../pages/Home/Children/Shirt';
-import Food from '../pages/Home/Children/Food';
-import MyBaby from '../pages/Home/Children/MyBaby';
-import Ele from '../pages/Home/Children/Ele';
-import General from '../pages/Home/Children/General';
-import TabType from '../config/tab-type';
-
+import Recommand from '../pages/Recommand/Recommand.vue'
+import Search from '../pages/Search/Search.vue'
+import Hot from '../pages/Home/Children/Hot/Hot'
+import Dress from '../pages/Home/Children/Dress'
+import Box from '../pages/Home/Children/Box'
+import Man from '../pages/Home/Children/Man'
+import Shirt from '../pages/Home/Children/Shirt'
+import Food from '../pages/Home/Children/Food'
+import MyBaby from '../pages/Home/Children/MyBaby'
+import Ele from '../pages/Home/Children/Ele'
+import General from '../pages/Home/Children/General'
+import Register from '../pages/Register/Register'
+import TabType from '../config/tab-type'
 
 // const originalPush = Router.prototype.push;
 // Router.prototype.push = function push(location) {
 //   return originalPush.call(this, location).catch(err => err)
 // };
 
-Vue.use(Router);
+Vue.use(Router)
 
 export default new Router({
     // mode: 'history',
     linkActiveClass: '',
     linkExactActiveClass: '',
-    routes: [{
+    routes: [
+        {
             path: '/',
             name: 'root',
             redirect: '/home',
             meta: {
                 title: '京东商城-首页',
                 keyword: 'home',
-                description: '京东商城-首页'
+                description: '京东商城-首页',
             },
         },
         {
             path: '/home',
             name: 'home',
             component: Home,
-            children: [{
+            children: [
+                {
                     path: '/home/',
                     component: Hot,
                     params: {
-                        id: TabType.HOT
+                        id: TabType.HOT,
                     },
                     meta: {
-                        id: TabType.HOT
-                    }
-                }, {
+                        id: TabType.HOT,
+                    },
+                },
+                {
                     path: '/home/hot',
                     component: Hot,
                     params: {
-                        id: TabType.HOT
+                        id: TabType.HOT,
                     },
                     meta: {
-                        id: TabType.HOT
-                    }
+                        id: TabType.HOT,
+                    },
                 },
                 {
                     path: '/home/dress',
                     component: Dress,
                     params: {
-                        id: TabType.DRESS
+                        id: TabType.DRESS,
                     },
                     meta: {
-                        id: TabType.DRESS
-                    }
+                        id: TabType.DRESS,
+                    },
                 },
                 {
                     path: '/home/box',
                     component: Box,
                     params: {
-                        id: TabType.BOX
+                        id: TabType.BOX,
                     },
                     meta: {
-                        id: TabType.BOX
-                    }
+                        id: TabType.BOX,
+                    },
                 },
                 {
                     path: '/home/mybaby',
                     component: MyBaby,
                     params: {
-                        id: TabType.MYBABY
+                        id: TabType.MYBABY,
                     },
                     meta: {
-                        id: TabType.MYBABY
-                    }
+                        id: TabType.MYBABY,
+                    },
                 },
                 {
                     path: '/home/general',
                     component: General,
                     params: {
-                        id: TabType.GENERAL
+                        id: TabType.GENERAL,
                     },
                     meta: {
-                        id: TabType.GENERAL
-                    }
+                        id: TabType.GENERAL,
+                    },
                 },
                 {
                     path: '/home/food',
                     component: Food,
                     params: {
-                        id: TabType.FOOD
+                        id: TabType.FOOD,
                     },
                     meta: {
-                        id: TabType.FOOD
-                    }
+                        id: TabType.FOOD,
+                    },
                 },
                 {
                     path: '/home/shirt',
                     component: Shirt,
                     params: {
-                        id: TabType.SHIRT
+                        id: TabType.SHIRT,
                     },
                     meta: {
-                        id: TabType.SHIRT
-                    }
+                        id: TabType.SHIRT,
+                    },
                 },
                 {
                     path: '/home/man',
                     component: Man,
                     params: {
-                        id: TabType.MAN
+                        id: TabType.MAN,
                     },
                     meta: {
-                        id: TabType.ELE
-                    }
+                        id: TabType.ELE,
+                    },
                 },
                 {
                     path: '/home/ele',
                     component: Ele,
                     params: {
-                        id: TabType.ELE
+                        id: TabType.ELE,
                     },
                     meta: {
-                        id: TabType.ELE
-                    }
-                }
-            ]
+                        id: TabType.ELE,
+                    },
+                },
+            ],
         },
         {
             path: '/recommand',
@@ -153,33 +156,37 @@ export default new Router({
             meta: {
                 title: '京东商城-推荐',
                 keyword: 'recommand',
-                description: '京东商城-推荐'
+                description: '京东商城-推荐',
             },
         },
         {
             path: '/search',
             name: 'search',
-            component: Search
+            component: Search,
         },
         {
             path: '/chat',
             name: 'chat',
-            component: Chat
+            component: Chat,
         },
         {
             path: '/mine',
             name: 'mine',
-            component: Mine
+            component: Mine,
         },
-
         {
             path: '/login',
             name: 'login',
-            component: Login
+            component: Login,
+        },
+        {
+            path: '/register',
+            name: 'register',
+            component: Register,
         },
         {
             path: '*',
-            redirect: '/home'
-        }
-    ]
-});
+            redirect: '/home',
+        },
+    ],
+})
