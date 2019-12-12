@@ -1,4 +1,5 @@
 @url=http://baidu.com
+
 ###
 get {{url}}
 

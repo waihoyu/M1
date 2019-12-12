@@ -1,8 +1,9 @@
-const path = require('path');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const path = require('path')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const purgecss = require()
 
 function resolve(dir) {
-    return path.join(__dirname, dir);
+    return path.join(__dirname, dir)
 }
 
 module.exports = {
@@ -39,45 +40,47 @@ module.exports = {
                         compress: {
                             warnings: false,
                             drop_console: true, //consoledrop_debugger:false,
-                            pure_funcs: ['console.log'] //移除console
-                        }
-                    }
-                })
-            ];
+                            pure_funcs: ['console.log'], //移除console
+                        },
+                    },
+                }),
+            ]
         }
     },
     // 是一个函数，会接收一个基于 webpack-chain 的 ChainableConfig 实例。允许对内部的 webpack 配置进行更细粒度的修改。
     chainWebpack: config => {
         if (process.env.NODE_ENV === 'production') {
             // 为生产环境修改配置...
-            config.mode = 'production';
+            config.mode = 'production'
         } else {
             // 为开发环境修改配置...
-            config.mode = 'development';
+            config.mode = 'development'
         }
         // 因为是多页面，所以取消 chunks，每个页面只对应一个单独的 JS / CSS
         config.optimization.splitChunks({
-            cacheGroups: {}
-        });
+            cacheGroups: {},
+        })
         // 'src/lib' 目录下为外部库文件，不参与 eslint 检测
         config.module
             .rule('eslint')
             .exclude.add('/Users/Mac/Downloads/FE/community_built-in/src/lib')
-            .end();
+            .end()
         config.module
             .rule('scss')
             .test(/\.scss$/)
             .use('scss-loader')
             .loader('scss-loader')
-            .end();
+            .end()
         config.module
             .rule('images')
             .test(/\.(png|jpe?g|gif|webp)(\?.*)?$/)
             .use('url-loader')
             .loader('url-loader')
-            .tap(options => Object.assign(options, {
-                limit: 1
-            }));
+            .tap(options =>
+                Object.assign(options, {
+                    limit: 1,
+                }),
+            )
         // config.module
         //     .rule('images')
         //     .use('image-webpack-loader')
@@ -129,9 +132,9 @@ module.exports = {
             .set('components', resolve('src/components'))
             .set('base', resolve('baseConfig'))
             .set('public', resolve('public'))
-            .set('common', resolve('src/common'));
-        config.resolve.extensions.merge(['.js', '.jsx', '.vue', '.json']).end();
-        config.resolve.symlinks(true);
+            .set('common', resolve('src/common'))
+        config.resolve.extensions.merge(['.js', '.jsx', '.vue', '.json']).end()
+        config.resolve.symlinks(true)
     },
     // css相关配置
     css: {
@@ -148,8 +151,8 @@ module.exports = {
             },
             postcss: {
                 // options here will be passed to postcss-loader
-            }
-        }
+            },
+        },
     },
     // webpack-dev-server 相关配置
     devServer: {
@@ -165,12 +168,12 @@ module.exports = {
                 changeOrigin: true, // 允许websockets跨域
                 // ws: true,
                 pathRewrite: {
-                    '^/api': ''
-                }
-            }
+                    '^/api': '',
+                },
+            },
         },
         // 代理转发配置，用于调试环境
-        before: app => {}
+        before: app => {},
     },
 
     // 构建时开启多进程处理 babel 编译
@@ -182,8 +185,8 @@ module.exports = {
         // new webpack.DefinePlugin()
         foo: {
             // 插件可以作为 `options.pluginOptions.foo` 访问这些选项。
-            vueName: 'Vue.js'
-        }
+            vueName: 'Vue.js',
+        },
     },
     css: {
         loaderOptions: {
@@ -192,7 +195,7 @@ module.exports = {
                 // @/ 是 src/ 的别名
                 // 所以这里假设你有 `src/variables.sass` 这个文件
                 // 注意：在 sass-loader v7 中，这个选项名是 "data"
-                prependData: `@import "~@/variables.sass"`
+                prependData: `@import "~@/variables.sass"`,
             },
             // 默认情况下 `sass` 选项会同时对 `sass` 和 `scss` 语法同时生效
             // 因为 `scss` 语法在内部也是由 sass-loader 处理的
@@ -200,16 +203,16 @@ module.exports = {
             // `scss` 语法会要求语句结尾必须有分号，`sass` 则要求必须没有分号
             // 在这种情况下，我们可以使用 `scss` 选项，对 `scss` 语法进行单独配置
             scss: {
-                prependData: `@import "~@/variables.scss";`
+                prependData: `@import "~@/variables.scss";`,
             },
             // 给 less-loader 传递 Less.js 相关选项
             less: {
                 // http://lesscss.org/usage/#less-options-strict-units `Global Variables`
                 // `primary` is global variables fields name
                 globalVars: {
-                    primary: '#fff'
-                }
-            }
-        }
-    }
+                    primary: '#fff',
+                },
+            },
+        },
+    },
 }
