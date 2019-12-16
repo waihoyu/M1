@@ -1,3 +1,6 @@
+/* *@description: *@author: Wai HoYu *@date: 2019-12-16 23:51:35 *@version:
+V1.0.5 */
+
 <template>
     <div id="app">
         <router-view></router-view>
@@ -6,21 +9,21 @@
 </template>
 
 <script>
-import TabBar from './components/TabBar';
+import TabBar from './components/TabBar'
 export default {
     name: 'app',
     data() {
-        return {};
+        return {}
     },
     methods: {},
     computed: {},
     components: {
-        TabBar
-    }
-};
+        TabBar,
+    },
+}
 </script>
 
-<style>
+<style scoped>
 @import '../src/assets/css/iconfont.css';
 * {
     text-decoration: none;
