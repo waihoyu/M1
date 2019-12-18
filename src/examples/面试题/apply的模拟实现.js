@@ -43,7 +43,7 @@ Function.prototype.apply4 = function(context, arr) {
     } else {
         var args = []
         for (let i = 0, len = args.length; i < len; i++) {
-            args.push('args[' + arr[i] + ']')
+            args.push('arr[' + i + ']')
         }
         result = eval('context.fn(' + args + ')')
     }
@@ -92,6 +92,52 @@ Function.prototype.bind2 = function(context) {
     return fBound
 }
 
+Function.prototype.apply5 = function(context, arr) {
+    var context = Object(context) || window
+    context.fn = this
+    var result = null
+    if (!arr) {
+        result = context.fn()
+    } else {
+        var args = []
+        for (let i = 0, len = arr.length; i < len; i++) {
+            args.push('arr[' + i + ']')
+        }
+        result = eval('context.fn(' + args + ')')
+    }
+    delete context.fn
+    return result
+}
+
+// 第三版
+Function.prototype.call2 = function(context) {
+    var context = context || window
+    context.fn = this
+
+    var args = []
+    for (var i = 1, len = arguments.length; i < len; i++) {
+        args.push('arguments[' + i + ']')
+    }
+
+    var result = eval('context.fn(' + args + ')')
+
+    delete context.fn
+    return result
+}
+
+Function.prototype.call3 = function(context) {
+    var context = context || window
+    context.fn = this
+    var result = null
+    var args = []
+    for (let i = 0; i < arguments.length; i++) {
+        args.push('arguments[' + i + ']')
+    }
+    result = eval('context.fn(' + args + ')')
+    delete context.fn
+    return result
+}
+
 var obj = {
     name: 1,
 }
@@ -100,4 +146,4 @@ function print() {
     console.log(this.name)
 }
 
-print.apply4(obj)
+print.call3(obj, [1, 2, 3])

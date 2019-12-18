@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+        <style>
+            html {
+                height: 5000px;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="button" id="btn" value="按钮" />
+        <script>
+            function throttle(fn, delay) {
+                var lastTime = 0
+                return function() {
+                    var nowTime = Date.now()
+                    if (nowTime - lastTime > delay) {
+                        fn.call(this)
+                        lastTime = nowTime
+                    }
+                }
+            }
+            function debounce(fn, delay) {
+                var timer = null
+                return function() {
+                    clearTimeout(timer)
+                    timer = setTimeout(function() {
+                        fn.apply(this)
+                    }, delay)
+                }
+            }
+
+            function throttle2(fn, delay) {
+                var lasttime = 0
+                return function() {
+                    var nowtime = Date.now()
+                    if (nowtime - lasttime > delay) {
+                        fn.call(this)
+                        lasttime = nowtime
+                    }
+                }
+            }
+            function debounce2(fn, delay) {
+                var timer = null
+                return function() {
+                    clearTimeout(timer)
+                    var timer = setTimeout(function() {
+                        fn.apply(this)
+                    }, delay)
+                }
+            }
+            document.onscroll = throttle2(function() {
+                console.log('事件被触发了')
+            }, 2000)
+            document.getElementById('btn').onclick = debounce(function() {
+                console.log('函数截流')
+            }, 1000)
+        </script>
+    </body>
+</html>
