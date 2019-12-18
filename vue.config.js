@@ -1,6 +1,6 @@
 const path = require('path')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const purgecss = require()
+// const purgecss = require()
 
 function resolve(dir) {
     return path.join(__dirname, dir)
