@@ -11,4 +11,25 @@ function flattenArray(arr) {
     return _arr
 }
 
-console.log(flattenArray(arr))
+// console.log(flattenArray(arr))
+
+function flattenArray2(arr) {
+    console.log(arr)
+    var result = []
+    while (
+        arr.some(item => {
+            console.log(item)
+            return Array.isArray(item)
+        })
+    ) {
+        arr = [].concat(...arr)
+        console.log(arr)
+    }
+    return arr
+}
+
+// console.log(flattenArray2(arr))
+
+arr.toString()
+    .split(',')
+    .forEach(item => console.log(item))
