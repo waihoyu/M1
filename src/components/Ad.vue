@@ -1,11 +1,9 @@
 <template>
-    <div class="ad-container">
-        
-    </div>
+    <div class="ad-container"></div>
 </template>
 
 <script>
-export default {};
+export default {}
 </script>
 
 <style lang="stylus" scoped></style>

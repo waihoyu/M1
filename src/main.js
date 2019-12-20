@@ -8,6 +8,29 @@ import router from './router'
 import FastClick from 'fastclick'
 import animate from 'animate.css'
 import { Avatar, Toast, Dialog } from '@nutui/nutui'
+import upperFirst from 'lodash/upperFirst'
+import camelCase from 'lodash/camelCase'
+
+const requireComponent = require.context(
+    './mcomponents/',
+    false,
+    /[A-Z]\w+\.(vue|js)$/,
+)
+
+requireComponent.keys().forEach(fileName => {
+    const componentConfig = requireComponent(fileName)
+    const componentName = upperFirst(
+        camelCase(
+            fileName
+                .split('/')
+                .pop()
+                .replace(/\.\w+$/, ''),
+        ),
+    )
+    // 全局注册组件
+    Vue.component(componentName, componentConfig.default || componentConfig)
+})
+
 Avatar.install(Vue)
 Toast.install(Vue)
 Dialog.install(Vue)

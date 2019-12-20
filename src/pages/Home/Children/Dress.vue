@@ -1,5 +1,7 @@
 <template>
-    <div class="dress-container" v-if="recommendshoplist.length > 0"></div>
+    <div class="dress-container">
+        <mButton></mButton>
+    </div>
 </template>
 
 <script>
