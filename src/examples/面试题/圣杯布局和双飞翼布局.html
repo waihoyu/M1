@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>圣杯布局和双飞翼布局</title>
+        <style>
+            #container {
+                display: flex;
+                width: 100%;
+                height: 100%;
+            }
+
+            #center {
+                flex: 1;
+                order: -2;
+                background-color: red;
+                width: 100%;
+                height: 200px;
+            }
+
+            #left {
+                flex: 0 0 200px;
+                order: -1;
+                background-color: blue;
+                width: 200px;
+                height: 200px;
+            }
+
+            #right {
+                flex: 0 0 150px;
+                background-color: green;
+                height: 200px;
+                width: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- DOM结构 -->
+        <div id="container">
+            <div id="center">center</div>
+            <div id="left">left</div>
+            <div id="right">right</div>
+        </div>
+    </body>
+</html>

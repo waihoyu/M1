@@ -1,0 +1,86 @@
+{
+    "name": "m1",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "vue-cli-service serve",
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "lint": "vue-cli-service lint",
+        "docs:dev": "vuepress dev docs",
+        "docs:build": "vuepress build docs"
+    },
+    "dependencies": {
+        "@nutui/nutui": "^2.1.7",
+        "animate.css": "^3.7.2",
+        "axios": "^0.19.0",
+        "babel": "^6.23.0",
+        "babel-plugin-component": "^1.1.1",
+        "babel-preset-latest": "^6.24.1",
+        "better-scroll": "^1.15.2",
+        "core-js": "^3.3.2",
+        "fastclick": "^1.0.6",
+        "file-loader": "^5.0.2",
+        "image-webpack-loader": "^6.0.0",
+        "ly-tab": "^2.1.2",
+        "mint-ui": "^2.2.13",
+        "path": "^0.12.7",
+        "purgecss-webpack-plugin": "^1.6.0",
+        "scss": "^0.2.4",
+        "scss-loader": "0.0.1",
+        "swiper": "^5.2.1",
+        "uglifyjs-webpack-plugin": "^2.2.0",
+        "url-loader": "^3.0.0",
+        "vue": "^2.6.10",
+        "vue-server-renderer": "^2.6.10"
+    },
+    "devDependencies": {
+        "@nutui/babel-plugin-separate-import": "^1.2.0",
+        "@vue/cli-plugin-babel": "^4.0.0",
+        "@vue/cli-plugin-eslint": "^4.0.0",
+        "@vue/cli-service": "^4.0.0",
+        "babel-eslint": "^10.0.3",
+        "eslint": "^5.16.0",
+        "eslint-plugin-vue": "^5.0.0",
+        "husky": "^3.1.0",
+        "node-sass": "^4.13.0",
+        "prettier": "1.19.1",
+        "pretty-quick": "^2.0.1",
+        "sass-loader": "^8.0.0",
+        "stylus": "^0.54.7",
+        "stylus-loader": "^3.0.2",
+        "vue-router": "^3.0.7",
+        "vue-template-compiler": "^2.6.10",
+        "vuepress": "^1.2.0",
+        "vuex": "^3.1.2",
+        "webpack": "^4.41.2"
+    },
+    "eslintConfig": {
+        "root": true,
+        "env": {
+            "node": true
+        },
+        "extends": [
+            "plugin:vue/essential",
+            "eslint:recommended"
+        ],
+        "rules": {},
+        "parserOptions": {
+            "parser": "babel-eslint"
+        }
+    },
+    "postcss": {
+        "plugins": {
+            "autoprefixer": {}
+        }
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions"
+    ],
+    "husky": {
+        "hooks": {
+            "pre-commit": "pretty-quick --staged"
+        }
+    }
+}

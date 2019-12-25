@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./openbox.css">
+    <script src="openbox.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+</head>
+
+<body>
+    <div class="main">
+
+        <div class="box">
+            <div class="tile top1"></div>
+            <div class="tile top2"></div>
+            <div class="tile top3"></div>
+            <div class="tile top4"></div>
+
+            <div class="tile bottom"></div>
+            <div class="tile front">
+                <span>CLICK TO UNBOX</span>
+            </div>
+            <div class="tile back"></div>
+            <div class="tile left"></div>
+            <div class="tile right"></div>
+            <div class="text">HELLO!!!</div>
+        </div>
+
+    </div>
+    <script>
+        (function () {
+
+            var box = $('.box');
+            var top1 = $('.top1');
+            var top2 = $('.top2');
+            var top3 = $('.top3');
+            var top4 = $('.top4');
+            var helloText = $('.text');
+
+            box.click(function () {
+                if (!top1.hasClass('open')) {
+                    top1.addClass('open');
+                    top2.addClass('open');
+                    top3.addClass('open');
+                    top4.addClass('open');
+                    helloText.addClass('open');
+                }
+            });
+
+            $('.main').mousemove(function (event) {
+
+                var y = 30 + (event.pageX - (window.innerWidth / 2)) * (10 / window.innerWidth);
+                var x = -20 + (event.pageY - (window.innerHeight / 2)) * (10 / window.innerHeight) * -1;
+
+                box.css({
+                    transform: 'translate(-50%, -50%) rotateY(' + y + 'deg) rotateX(' + x + 'deg)'
+                });
+
+            });
+
+        })();
+    </script>
+</body>
+
+</html>
