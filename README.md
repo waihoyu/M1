@@ -1,3 +1,6 @@
+<p align="center" style="color:green">
+  <img src="../M1/src/assets/images/README.gif" alt="mine">
+</p>
 <h2 align="center" style="color:green">
   M站简要说明
 </h2>
