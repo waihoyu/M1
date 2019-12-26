@@ -1,0 +1,25 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+    },
+    "extends": "standard",
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly",
+        "var1": "writable",
+        "var4": "writable"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "plugins": ["vue"],
+    "rules": {
+        // "no-console": "off"
+        "spaced-comment": "off",
+        "prefer-const": "off",
+        "no-unused-vars": "off"
+    }
+}

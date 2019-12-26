@@ -15,7 +15,11 @@ export default {
     data() {
         return {}
     },
-    methods: {},
+    methods: {
+        app() {
+            console.log('123')
+        },
+    },
     computed: {},
     components: {
         TabBar,

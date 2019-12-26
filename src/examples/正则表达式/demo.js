@@ -1,3 +1,10 @@
+/* eslint no-console: 'off' */
+let sayHi = () => {
+    console.log('sayHi', 0)
+}
+
+sayHi()
+
 //正则表达式
 //regular
 //只能处理字符串
@@ -9,7 +16,13 @@ let reg1 = /\d+/
 str = '2019-08-12'
 //[ '2019', index: 0, input: '2019-08-12', groups: undefined ]
 console.log(reg1.exec(str))
-//编写正则表达式
+
+var1 = 1
+console.log(var1)
+var4 = 4
+console.log(typeof var4)
+
+// 编写正则表达式
 // 创建方式有两种
 //字面量方式（两个斜杠之间包起来，都是用来描述规则的元字符）
 let reg2 = /\d+/
@@ -79,4 +92,14 @@ let reg57 = /^\d+$/gm
 
 let reg58 = /\d/gm
 //举个例子 ：验证手机号码（11位数，第一个数字是1即可）
-let reg = /^1\d{10}$/gm
+let reg59 = /^1\d{10}$/gm
+
+let reg60 = /^2.3$/gm
+// 基于转义字符  让其只能代表小数点
+
+let reg61 = /^2\.3$/
+
+let str21 = 'd'
+let reg62 = /^\d$/
+
+console.log(reg62.test(str21))
