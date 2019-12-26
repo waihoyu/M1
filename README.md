@@ -1,6 +1,6 @@
-<p align="center">
-  <img width="320" src="https://wpimg.wallstcn.com/ecc53a42-d79b-42e2-8852-5126b810a4c8.svg">
-</p>
+<h2 align="center" style="color:green">
+  M站简要说明
+</h2>
 
 <p align="center">
   <a href="https://github.com/vuejs/vue">
@@ -9,22 +9,22 @@
   <!-- <a href="https://github.com/ElemeFE/element">
     <img src="https://img.shields.io/badge/element--ui-2.7.0-brightgreen.svg" alt="element-ui">
   </a> -->
-  <a href="https://travis-ci.org/waihoyu/wai-ui" rel="nofollow">
-    <img src="https://travis-ci.org/waihoyu/wai-ui.svg?branch=master" alt="Build Status">
+  <a href="https://travis-ci.org/waihoyu/M1" rel="nofollow">
+    <img src="https://travis-ci.com/waihoyu/M1.svg?branch=master" alt="Build Status">
   </a>
-  <a href="https://github.com/waihoyu/wai-ui/master/LICENSE">
+  <a href="https://github.com/waihoyu/M1/master/LICENSE">
     <img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license">
   </a>
-  <a href="https://github.com/waihoyu/wai-ui/release">
-    <img src="https://img.shields.io/github/release/waihoyu/wai-ui.svg" alt="GitHub release">
+  <a href="https://github.com/waihoyu/M1/releases">
+    <img src="https://img.shields.io/github/release/waihoyu/M1.svg" alt="GitHub release">
   </a>
-  <a href="https://gitter.im/wai-ui/discuss">
+  <a href="https://gitter.im/M1/discuss">
     <img src="https://badges.gitter.im/Join%20Chat.svg" alt="gitter">
   </a>
-  <a href="https://waihoyu.gitee.io/wai-ui-site/zh/donate">
+  <a href="https://waihoyu.gitee.io/M1-site/zh/donate">
     <img src="https://img.shields.io/badge/%24-donate-ff69b4.svg" alt="donate">
   </a>
-    <a href="https://waihoyu.gitee.io/wai-ui-site/zh/donate">
+    <a href="https://waihoyu.gitee.io/M1-site/zh/donate">
     <img src="https://img.shields.io/github/followers/waihoyu?style=social" alt="f">
   </a>
   
@@ -32,77 +32,61 @@
 
 <br>
 
-简体中文 | [English](./README.md) | [日本語](./README.ja.md) | [Spanish](./README.es.md)
+简体中文 | [English](./README.md)
 
 ## 简介
 
-[wai-ui](https://waihoyu.github.io/wai-ui) 是一个后台前端解决方案，它基于 [vue](https://github.com/vuejs/vue) 和 [element-ui](https://github.com/ElemeFE/element)实现。它使用了最新的前端技术栈，内置了 i18n 国际化解决方案，动态路由，权限验证，提炼了典型的业务模型，提供了丰富的功能组件，它可以帮助你快速搭建企业级中后台产品原型。相信不管你的需求是什么，本项目都能帮助到你。
+[M1](https://waihoyu.github.io/M1) 是一个后台前端解决方案，它基于 [vue](https://github.com/vuejs/vue) 和 [nutui](https://github.com/jdf2e/nutui)实现。它使用了最新的前端技术栈，基本覆盖了 Vue.js 全家桶的所有技术。
 
--   [在线预览](https://waihoyu.github.io/wai-ui)
+-   [在线预览](https://waihoyu.github.io/M1)
 
--   [使用文档](https://waihoyu.github.io/wai-ui-site/zh/)
+-   [Gitter 讨论组](https://gitter.im/M1/discuss)
 
--   [Gitter 讨论组](https://gitter.im/wai-ui/discuss)
+-   [Gitee](https://waihoyu.gitee.io/M1/) 在线预览（国内用户可访问该地址）
 
--   [Donate](https://waihoyu.gitee.io/wai-ui-site/zh/donate)
+-   [国内访问文档](https://waihoyu.gitee.io/M1-site/zh/) 文档（方便没翻墙的用户查看）
 
--   [Wiki](https://github.com/waihoyu/wai-ui/wiki)
+-   基础模板建议使用: [M1](https://github.com/waihoyu/M1)
 
--   [Gitee](https://waihoyu.gitee.io/wai-ui/) 在线预览（国内用户可访问该地址）
+**该项目不支持低版本浏览器(如 ie)，有需求请自行添加 polyfill [详情](https://github.com/waihoyu/M1/wiki#babel-polyfill)**
 
--   [国内访问文档](https://waihoyu.gitee.io/wai-ui-site/zh/) 文档（方便没翻墙的用户查看）
-
--   基础模板建议使用: [vue-admin-template](https://github.com/waihoyu/vue-admin-template)
--   桌面端: [electron-vue-admin](https://github.com/waihoyu/electron-vue-admin)
--   Typescript 版: [vue-typescript-admin-template](https://github.com/Armour/vue-typescript-admin-template) (鸣谢: [@Armour](https://github.com/Armour))
--   [awesome-project](https://github.com/waihoyu/wai-ui/issues/2312)
-
-**`v4.1.0+`版本之后默认 master 分支将不支持国际化，有需要的请使用[i18n](https://github.com/waihoyu/wai-ui/tree/i18n)分支，它会和 master 保持同步更新**
-
-**该项目不支持低版本浏览器(如 ie)，有需求请自行添加 polyfill [详情](https://github.com/waihoyu/wai-ui/wiki#babel-polyfill)**
-
-**目前版本为 `v4.0+` 基于 `vue-cli` 进行构建，若发现问题，欢迎提[issue](https://github.com/waihoyu/wai-ui/issues/new)。若你想使用旧版本，可以切换分支到[tag/3.11.0](https://github.com/waihoyu/wai-ui/tree/tag/3.11.0)，它不依赖 `vue-cli`**
-
-群主 **[圈子](https://jianshiapp.com/circles/1209)** 群主会经常分享一些技术相关的东西，或者加入 [qq 群](https://github.com/waihoyu/wai-ui/issues/602) 或者关注 [微博](https://weibo.com/u/3423485724?is_all=1)
+**目前版本为基于 `vue-cli` 进行构建，若发现问题，欢迎提[issue](https://github.com/waihoyu/M1/issues/new)。若你想使用旧版本，可以切换分支到[tag/3.11.0](https://github.com/waihoyu/M1/tree/tag/3.11.0)，它不依赖 `vue-cli`**
 
 ## 前序准备
 
 你需要在本地安装 [node](http://nodejs.org/) 和 [git](https://git-scm.com/)。本项目技术栈基于 [ES2015+](http://es6.ruanyifeng.com/)、[vue](https://cn.vuejs.org/index.html)、[vuex](https://vuex.vuejs.org/zh-cn/)、[vue-router](https://router.vuejs.org/zh-cn/) 、[vue-cli](https://github.com/vuejs/vue-cli) 、[axios](https://github.com/axios/axios) 和 [element-ui](https://github.com/ElemeFE/element)，所有的请求数据都使用[Mock.js](https://github.com/nuysoft/Mock)进行模拟，提前了解和学习这些知识会对使用本项目有很大的帮助。
 
-同时配套了系列教程文章，如何从零构建后一个完整的后台项目，建议大家先看完这些文章再来实践本项目
-
--   [手摸手，带你用 vue 撸后台 系列一(基础篇)](https://juejin.im/post/59097cd7a22b9d0065fb61d2)
--   [手摸手，带你用 vue 撸后台 系列二(登录权限篇)](https://juejin.im/post/591aa14f570c35006961acac)
--   [手摸手，带你用 vue 撸后台 系列三 (实战篇)](https://juejin.im/post/593121aa0ce4630057f70d35)
--   [手摸手，带你用 vue 撸后台 系列四(vueAdmin 一个极简的后台基础模板)](https://juejin.im/post/595b4d776fb9a06bbe7dba56)
--   [手摸手，带你用 vue 撸后台 系列五(v4.0 新版本)](https://juejin.im/post/5c92ff94f265da6128275a85)
--   [手摸手，带你封装一个 vue component](https://segmentfault.com/a/1190000009090836)
--   [手摸手，带你优雅的使用 icon](https://juejin.im/post/59bb864b5188257e7a427c09)
--   [手摸手，带你用合理的姿势使用 webpack4（上）](https://juejin.im/post/5b56909a518825195f499806)
--   [手摸手，带你用合理的姿势使用 webpack4（下）](https://juejin.im/post/5b5d6d6f6fb9a04fea58aabc)
-
 **如有问题请先看上述使用文档和文章，若不能满足，欢迎 issue 和 pr**
-
- <p align="center">
-  <img width="900" src="https://wpimg.wallstcn.com/a5894c1b-f6af-456e-82df-1151da0839bf.png">
-</p>
 
 ## Sponsors
 
 Become a sponsor and get your logo on our README on GitHub with a link to your site. [[Become a sponsor]](https://www.patreon.com/waihoyu)
 
-<a href="https://flatlogic.com/admin-dashboards?from=wai-ui"><img width="150px" src="https://wpimg.wallstcn.com/9c0b719b-5551-4c1e-b776-63994632d94a.png" /></a><p>Admin Dashboard Templates made with Vue, React and Angular.</p>
+<a href="https://flatlogic.com/admin-dashboards?from=M1"><img width="150px" src="https://wpimg.wallstcn.com/9c0b719b-5551-4c1e-b776-63994632d94a.png" /></a><p>Admin Dashboard Templates made with Vue, React and Angular.</p>
+
+## 项目预览
+
+ <p align="center">
+ 
+![image](./src/assets/images/main.png)
+
+![image](./src/assets/images/recommend.png)
+
+![image](./src/assets/images/rearch.png)
+
+</p>
 
 ## 功能
 
 ```
 - 登录 / 注销
 
-- 权限验证
-  - 页面权限
-  - 指令权限
-  - 权限配置
-  - 二步登录
+- 首页底部导航栏
+  - 首页
+  - 推荐
+  - 搜索
+  - 聊天
+  - 我的
 
 - 多环境发布
   - dev sit stage prod
@@ -118,55 +102,16 @@ Become a sponsor and get your logo on our README on GitHub with a link to your s
   - Screenfull全屏
   - 自适应收缩侧边栏
 
-- 编辑器
-  - 富文本
-  - Markdown
-  - JSON 等多格式
-
-- Excel
-  - 导出excel
-  - 导入excel
-  - 前端可视化excel
-  - 导出zip
-
-- 表格
-  - 动态表格
-  - 拖拽表格
-  - 内联编辑
-
-- 错误页面
-  - 401
-  - 404
-
-- 組件
-  - 头像上传
-  - 返回顶部
-  - 拖拽Dialog
-  - 拖拽Select
-  - 拖拽看板
-  - 列表拖拽
-  - SplitPane
-  - Dropzone
-  - Sticky
-  - CountTo
-
-- 综合实例
-- 错误日志
-- Dashboard
-- 引导页
-- ECharts 图表
-- Clipboard(剪贴复制)
-- Markdown2html
 ```
 
 ## 开发
 
 ```bash
 # 克隆项目
-git clone https://github.com/waihoyu/wai-ui.git
+git clone https://github.com/waihoyu/M1.git
 
 # 进入项目目录
-cd wai-ui
+cd M1
 
 # 安装依赖
 npm install
@@ -178,7 +123,7 @@ npm install --registry=https://registry.npm.taobao.org
 npm run dev
 ```
 
-浏览器访问 http://localhost:9527
+浏览器访问 http://localhost:8080
 
 ## 发布
 
@@ -206,26 +151,22 @@ npm run lint
 npm run lint -- --fix
 ```
 
-更多信息请参考 [使用文档](https://waihoyu.github.io/wai-ui-site/zh/)
+更多信息请参考 [使用文档](https://waihoyu.github.io/M1-site/zh/)
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](https://github.com/waihoyu/wai-ui/releases).
+Detailed changes for each release are documented in the [release notes](https://github.com/waihoyu/M1/releases).
 
 ## Online Demo
 
-[在线 Demo](https://waihoyu.github.io/wai-ui)
+[在线 Demo](https://waihoyu.github.io/M1)
 
 ## Donate
 
 如果你觉得这个项目帮助到了你，你可以帮作者买一杯果汁表示鼓励 :tropical_drink:
 ![donate](https://waihoyu.github.io/donate/donation.png)
 
-[更多捐赠方式](https://waihoyu.gitee.io/wai-ui-site/zh/donate)
-
-[Paypal Me](https://www.paypal.me/panfree23)
-
-[Buy me a coffee](https://www.buymeacoffee.com/Pan)
+[更多捐赠方式](https://waihoyu.gitee.io/M1-site/zh/donate)
 
 ## Browsers support
 
@@ -237,51 +178,6 @@ Modern browsers and Internet Explorer 10+.
 
 ## License
 
-[MIT](https://github.com/waihoyu/wai-ui/blob/master/LICENSE)
+[MIT](https://github.com/waihoyu/M1/blob/master/LICENSE)
 
-Copyright (c) 2017-present waihoyu
-
-# 仿电子商城
-
-![image](./src/assets/images/main.png)
-
-![image](./src/assets/images/recommend.png)
-
-![image](./src/assets/images/rearch.png)
-
-## 非常重要对命令
-
-```
-git add dist && git commit -m "Initial dist subtree commit"
-
-git subtree push --prefix dist origin gh-pages
-
-```
-
-## Project setup
-
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-
-```
-npm run build
-```
-
-### Lints and fixes files
-
-```
-npm run lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Copyright (c) 2019-present WaiHoYu
